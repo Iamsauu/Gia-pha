@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gia Phả Họ Nguyễn Văn - Trưởng Chi</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- D3.js Library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <!-- Header App Bar -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="logo-container">
+        <i class="fa-solid fa-seedling logo-icon"></i>
+      </div>
+      <div class="title-container">
+        <h1>Gia Phả Họ Nguyễn Văn</h1>
+        <p class="subtitle">Lịch Sử Phát Triển Chi Một (Trưởng Chi - Nguyễn Văn Hồ)</p>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <!-- Search Input -->
+      <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="search-input" placeholder="Tìm kiếm thành viên..." autocomplete="off">
+        <button id="clear-search-btn" class="clear-search-btn" title="Xóa tìm kiếm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="search-results" class="search-results-dropdown"></div>
+      </div>
+      
+      <!-- Toolbar Controls -->
+      <div class="control-group">
+        <button id="btn-zoom-in" class="btn-control" title="Phóng to">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button id="btn-zoom-out" class="btn-control" title="Thu nhỏ">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button id="btn-zoom-fit" class="btn-control" title="Vừa màn hình">
+          <i class="fa-solid fa-arrows-to-eye"></i>
+        </button>
+      </div>
+      
+      <!-- Theme Switcher -->
+      <button id="btn-theme-toggle" class="btn-control btn-theme" title="Đổi giao diện">
+        <i class="fa-solid fa-moon theme-icon-dark"></i>
+        <i class="fa-solid fa-sun theme-icon-light"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="app-main">
+    <!-- Chart Container -->
+    <div id="tree-container" class="tree-container">
+      <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Đang tải sơ đồ gia phả...</p>
+      </div>
+
+      <!-- Floating Rotate Tree Button -->
+      <button id="btn-rotate-tree" class="btn-floating-rotate" title="Xoay cây (Ngang / Dọc)">
+        <i class="fa-solid fa-arrows-rotate"></i>
+      </button>
+    </div>
+
+    <!-- Details Sidebar (Glassmorphism Slide-out) -->
+    <aside id="details-sidebar" class="details-sidebar">
+      <button id="btn-close-sidebar" class="btn-close-sidebar" title="Đóng bảng chi tiết">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="sidebar-content">
+        <div class="sidebar-header">
+          <span class="generation-badge" id="sidebar-gen-badge">Đời 1</span>
+          <h2 id="sidebar-name">Tên Thành Viên</h2>
+          <p id="sidebar-notes" class="member-subtitle">Ghi chú thành viên</p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="sidebar-section" id="spouse-section">
+          <h3><i class="fa-solid fa-ring section-icon"></i> Thông tin Kết Hôn</h3>
+          <div class="spouse-card">
+            <div class="spouse-info">
+              <h4 id="spouse-name">Kết hôn</h4>
+              <p id="spouse-details"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section" id="anniversary-section">
+          <h3><i class="fa-solid fa-calendar-check section-icon"></i> Ngày Giỗ</h3>
+          <div id="anniversary-details">Chưa cập nhật ngày giỗ</div>
+        </div>
+
+        <div class="sidebar-section" id="children-section">
+          <h3><i class="fa-solid fa-users section-icon"></i> Danh sách Con cái</h3>
+          <ul id="children-list" class="children-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+        
+        <div class="sidebar-section" id="ancestors-section">
+          <h3><i class="fa-solid fa-sitemap section-icon"></i> Dòng dõi trực hệ</h3>
+          <div id="ancestor-trail" class="ancestor-trail">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+        
+        <div class="sidebar-section" id="compare-section">
+          <h3><i class="fa-solid fa-scale-balanced section-icon"></i> So sánh vai vế</h3>
+          <div class="compare-container">
+            <div class="searchable-select" id="compare-searchable-select">
+              <div class="select-trigger">
+                <input type="text" id="compare-search-input" placeholder="Tìm người để so vai vế..." autocomplete="off">
+                <i class="fa-solid fa-chevron-down select-chevron"></i>
+              </div>
+              <div class="select-dropdown-list" id="compare-dropdown-list">
+                <!-- Options populated dynamically -->
+              </div>
+            </div>
+            <div id="compare-result" class="compare-result">
+              <!-- Result will be rendered here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Custom JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1354 @@
+{
+  "id": "root_ancestor",
+  "name": "Nguyễn Văn Hộ (Hiệu Phúc Cảnh) & Lê Hiệu Diệu Long",
+  "generation": 1,
+  "husband": {
+    "name": "Nguyễn Văn Hộ",
+    "title": "Cụ Ông",
+    "alias": "Hiệu Phúc Cảnh",
+    "anniversary": "16-12"
+  },
+  "wife": {
+    "name": "Lê Hiệu Diệu Long",
+    "title": "Cụ Bà",
+    "anniversary": "28-6"
+  },
+  "notes": "Cụ Tổ Chi (Trưởng Chi - Nguyễn Văn Hồ)",
+  "children": [
+    {
+      "id": "gen2_nguyen_van_luong",
+      "name": "Nguyễn Văn Lương & Phạm Thị Quận",
+      "generation": 2,
+      "husband": {
+        "name": "Nguyễn Văn Lương",
+        "title": "Cụ Ông",
+        "anniversary": "1-6"
+      },
+      "wife": {
+        "name": "Phạm Thị Quận",
+        "title": "Cụ Bà",
+        "alias": "Hiệu Thực Lương",
+        "anniversary": "24-7"
+      },
+      "children": [
+        {
+          "id": "gen3_nguyen_thi_luong",
+          "name": "Nguyễn Thị Lượng & Nguyễn V Xuất",
+          "generation": 3,
+          "wife": {
+            "name": "Nguyễn Thị Lượng",
+            "title": "Cụ Bà"
+          },
+          "husband": {
+            "name": "Nguyễn V Xuất"
+          },
+          "notes": "Lấy chồng Nguyễn V Xuất"
+        },
+        {
+          "id": "gen3_nguyen_van_hao",
+          "name": "Nguyễn Văn Hảo & Vợ",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Hảo",
+            "title": "Cụ Ông",
+            "anniversary": "28-12"
+          },
+          "wife": {
+            "name": "Cụ Bà"
+          },
+          "children": [
+            {
+              "id": "gen4_trum_cach",
+              "name": "Ông Trùm Cách (Trực Điển)",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Trùm Cách",
+                "alias": "Trực Điển",
+                "notes": "Mất lúc 20 tuổi"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Lấy / Phùng Thị Đồng",
+                "notes": "Vợ cả: Nguyễn Thị Liên (Giỗ: 4-10). Vợ hai: Phùng Thị Đồng (Giỗ: 1-12)"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_loi",
+                  "name": "Bà Nguyễn V Nhật & Chồng",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn V Nhật (Thịnh)"
+                  },
+                  "husband": {
+                    "name": "Ông Thọ"
+                  },
+                  "children": [
+                    { "id": "gen6_tho", "name": "Ô. Thọ", "generation": 6, "husband": { "name": "Ô. Thọ" } },
+                    { "id": "gen6_tit", "name": "Ô. Tít", "generation": 6, "husband": { "name": "Ô. Tít" } },
+                    { "id": "gen6_phanh", "name": "Ô. Phanh", "generation": 6, "husband": { "name": "Ô. Phanh" } },
+                    { "id": "gen6_dinh", "name": "Ô. Đỉnh (trên Sơn Tây)", "generation": 6, "husband": { "name": "Ô. Đỉnh", "notes": "trên Sơn Tây" } },
+                    { "id": "gen6_lai", "name": "Ô. Lài", "generation": 6, "husband": { "name": "Ô. Lài" } },
+                    { "id": "gen6_che", "name": "Ô. Chế", "generation": 6, "husband": { "name": "Ô. Chế" } },
+                    { "id": "gen6_tich", "name": "B. Tích", "generation": 6, "wife": { "name": "B. Tích" } },
+                    { "id": "gen6_yen", "name": "B. Yến", "generation": 6, "wife": { "name": "B. Yến" } }
+                  ]
+                },
+                {
+                  "id": "gen5_nguyen_van_xuan",
+                  "name": "Nguyễn Văn Hộ & Hà Thuân",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Hộ"
+                  },
+                  "wife": {
+                    "name": "Hà Thuân"
+                  }
+                },
+                {
+                  "id": "gen5_phung_viet_vung",
+                  "name": "Phùng Việt Vũng & Hoa",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Phùng Việt Vũng"
+                  },
+                  "wife": {
+                    "name": "Hoa"
+                  }
+                },
+                {
+                  "id": "gen5_nguyen_thi_ti",
+                  "name": "Nhánh Bà Nguyễn Thị Tị (Sửu)",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Tị (Sửu)"
+                  },
+                  "children": [
+                    { "id": "gen6_tu", "name": "B. Tụ", "generation": 6, "wife": { "name": "B. Tụ", "notes": "Bà cả" } },
+                    { "id": "gen6_dung", "name": "B. Dựng", "generation": 6, "wife": { "name": "B. Dựng" } },
+                    { "id": "gen6_canh", "name": "B. Canh", "generation": 6, "wife": { "name": "B. Canh" } },
+                    { "id": "gen6_teo", "name": "Ô. Tèo (chết trẻ)", "generation": 6, "husband": { "name": "Ô. Tèo", "notes": "chết trẻ" } },
+                    { "id": "gen6_dien", "name": "Ô. Điện (chết trẻ)", "generation": 6, "husband": { "name": "Ô. Điện", "notes": "chết trẻ" } },
+                    { "id": "gen6_cuc", "name": "B. Cúc (Tích)", "generation": 6, "wife": { "name": "B. Cúc", "alias": "Tích" } },
+                    { "id": "gen6_tam", "name": "B. Tám", "generation": 6, "wife": { "name": "B. Tám" } },
+                    { "id": "gen6_mon", "name": "B. Mọn (Ngả)", "generation": 6, "wife": { "name": "B. Mọn", "alias": "Ngả" } },
+                    { "id": "gen6_that", "name": "B. Thật (vợ Ô. Sinh)", "generation": 6, "wife": { "name": "B. Thật", "notes": "vợ Ô. Sinh" } },
+                    { "id": "gen6_phuong", "name": "B. Phương", "generation": 6, "wife": { "name": "B. Phương" } },
+                    { "id": "gen6_thu", "name": "B. Thu", "generation": 6, "wife": { "name": "B. Thu" } },
+                    { "id": "gen6_nga", "name": "B. Nga", "generation": 6, "wife": { "name": "B. Nga" } }
+                  ]
+                },
+                {
+                  "id": "gen5_nguyen_van_nghe",
+                  "name": "Nguyễn Văn Nghệ (Lập)",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Nghệ",
+                    "alias": "Lập",
+                    "anniversary": "8-2"
+                  }
+                },
+                {
+                  "id": "gen5_nguyen_van_nghiep",
+                  "name": "Nguyễn Văn Nghiệp",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Nghiệp",
+                    "anniversary": "14-3"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_trum_nghi",
+              "name": "Ông Trùm Nghị & Bà Cản",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Trùm Nghị"
+              },
+              "wife": {
+                "name": "Bà Cản",
+                "anniversary": "24-1"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_ho",
+                  "name": "Nguyễn Văn Hồ & Nguyễn Thị Huân",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Hồ"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Huân"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_tuong",
+              "name": "Ông Tưởng",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Tưởng"
+              }
+            },
+            {
+              "id": "gen4_du",
+              "name": "Bà Đủ (Bà Lộc)",
+              "generation": 4,
+              "wife": {
+                "name": "Bà Đủ",
+                "alias": "Bà Lộc"
+              }
+            },
+            {
+              "id": "gen4_lum",
+              "name": "Ông Lựm",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Lựm"
+              }
+            },
+            {
+              "id": "gen4_man",
+              "name": "Ông Mân",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Mân"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_cuong",
+          "name": "Nguyễn V Cường & Đỗ Thị Bủn",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn V Cường",
+            "title": "Cụ Ông"
+          },
+          "wife": {
+            "name": "Đỗ Thị Bủn",
+            "title": "Cụ Bà",
+            "alias": "Hiệu Diệu Kiên",
+            "anniversary": "23-4"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_trang",
+              "name": "Nguyễn Văn Tráng & Nguyễn Thị Lý",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Tráng",
+                "anniversary": "14-2"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Lý"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_thinh",
+                  "name": "Nguyễn Văn Thịnh",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Thịnh"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_phung",
+              "name": "Nguyễn Văn Phúng & Các Vợ",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Phúng",
+                "anniversary": "30-12"
+              },
+              "wife": {
+                "name": "Cụ Bà 1 / Cụ Bà 2",
+                "notes": "Cụ Bà 1 (Giỗ: 20-1). Cụ Bà 2 (Giỗ: 8-8)"
+              },
+              "children": [
+                { "id": "gen5_gai", "name": "Bà Gái", "generation": 5, "wife": { "name": "Bà Gái", "notes": "Giỗ 16-10 tuổi" } },
+                { "id": "gen5_lam_san", "name": "B. Làm Sân", "generation": 5, "wife": { "name": "B. Làm Sân" } },
+                { "id": "gen5_sanh_con", "name": "Sành Con", "generation": 5 },
+                { "id": "gen5_thuy", "name": "Ô. Thủy", "generation": 5, "husband": { "name": "Ô. Thủy" } },
+                { "id": "gen5_thuan", "name": "Ô. Thuận", "generation": 5, "husband": { "name": "Ô. Thuận" } },
+                { "id": "gen5_du", "name": "B. Đủ", "generation": 5, "wife": { "name": "B. Đủ" } },
+                { "id": "gen5_kha", "name": "B. Kha", "generation": 5, "wife": { "name": "B. Kha" } }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_lich",
+              "name": "Nguyễn Văn Lịch & Trần Thị Liên",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Lịch",
+                "alias": "Phúc Hòa"
+              },
+              "wife": {
+                "name": "Trần Thị Liên",
+                "anniversary": "26-12"
+              },
+              "children": [
+                { "id": "gen5_ta", "name": "B. Tả", "generation": 5, "wife": { "name": "B. Tả" } },
+                { "id": "gen5_ta_2", "name": "B. Tạ", "generation": 5, "wife": { "name": "B. Tạ" } },
+                { "id": "gen5_chan", "name": "Ô. Chấn", "generation": 5, "husband": { "name": "Ô. Chấn" } }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_su",
+              "name": "Nguyễn Văn Sự & Phùng Thị Lý",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Sự",
+                "alias": "Phúc Đăng",
+                "anniversary": "29-6"
+              },
+              "wife": {
+                "name": "Phùng Thị Lý",
+                "alias": "Diệu Tình",
+                "anniversary": "25-12"
+              }
+            },
+            {
+              "id": "gen4_nguyen_thi_thu",
+              "name": "Nguyễn Thị Thứ",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Thứ",
+                "alias": "Trực Khang",
+                "anniversary": "25-12"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_vat",
+          "name": "Nguyễn V Vật & Hoàng Thị Cận",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn V Vật",
+            "title": "Cụ Ông",
+            "anniversary": "28-12"
+          },
+          "wife": {
+            "name": "Hoàng Thị Cận",
+            "title": "Cụ Bà"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_trung",
+              "name": "Nguyễn Văn Trung",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Trung",
+                "alias": "Trực Hoàn",
+                "anniversary": "28-12"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_luc",
+          "name": "Nguyễn Văn Lực & Nguyễn Thị Công",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Lực",
+            "title": "Cụ Ông",
+            "alias": "Phúc Tài",
+            "anniversary": "12-2"
+          },
+          "wife": {
+            "name": "Nguyễn Thị Công",
+            "title": "Cụ Bà",
+            "alias": "Trực Ngân",
+            "anniversary": "4-5"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_bac",
+              "name": "Nguyễn Văn Bắc & Ngô Thị Ngọc",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Bắc",
+                "alias": "Trực Kính"
+              },
+              "wife": {
+                "name": "Ngô Thị Ngọc",
+                "notes": "Quê quán: Phú Hòa Minh"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_huy",
+                  "name": "Nguyễn Văn Huy & Vợ",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Huy",
+                    "alias": "Hùng",
+                    "anniversary": "17-3"
+                  },
+                  "wife": {
+                    "name": "Bà Cận"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_tin",
+              "name": "Nguyễn Thị Tín & Nguyễn Lưu Văn Chu",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Tín",
+                "alias": "T - Còn"
+              },
+              "husband": {
+                "name": "Nguyễn Lưu Văn Chu"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_hong",
+                  "name": "Nguyễn Văn Hồng & Nguyễn Thị Kính",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Hồng",
+                    "alias": "Lưu"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Kính",
+                    "notes": "Quê quán: Trình Thắng / Trị Thắng"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_khanh",
+              "name": "Nguyễn Thị Khanh & Nguyễn Văn Oành",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Khanh",
+                "anniversary": "17-3"
+              },
+              "husband": {
+                "name": "Nguyễn Văn Oành",
+                "notes": "Khanh Thuận Vàng"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_chu",
+                  "name": "Nguyễn Văn Chu & Lưu Thị Tín",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Chu"
+                  },
+                  "wife": {
+                    "name": "Lưu Thị Tín",
+                    "alias": "T - Còn",
+                    "anniversary": "2-7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_khuyen",
+              "name": "Nguyễn Thị Khuyên",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Khuyên",
+                "alias": "Phúc Cận",
+                "anniversary": "2-7"
+              },
+              "children": [
+                {
+                  "id": "gen5_khuyen_child",
+                  "name": "Bà Nguyễn Thị Khuyên & Lý Văn Chúc",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Khuyên",
+                    "alias": "Phúc Cận",
+                    "anniversary": "2-7"
+                  },
+                  "husband": {
+                    "name": "Lý Văn Chúc"
+                  },
+                  "notes": "Mất lúc 12 tuổi"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_ty",
+          "name": "Nguyễn Văn Tý & Lê Thị Phúc",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Tý",
+            "title": "Cụ Ông",
+            "alias": "Phúc Tiểu / Téo",
+            "notes": "2-7"
+          },
+          "wife": {
+            "name": "Lê Thị Phúc",
+            "title": "Cụ Bà",
+            "alias": "Hiệu Diệu Ý",
+            "anniversary": "8-8"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_kinh",
+              "name": "Nguyễn Văn Kính",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Kính",
+                "alias": "Hiệu Thực Thu"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_hoi",
+                  "name": "Nguyễn Văn Hội & Nguyễn Thị Bìm",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Hội"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Bìm"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_khuyen",
+              "name": "Nguyễn Văn Khuyến",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Khuyến",
+                "alias": "Phúc Cận",
+                "anniversary": "2-7",
+                "notes": "Mất lúc 12 tuổi"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_khuyet",
+                  "name": "Nguyễn Văn Khuyết",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Khuyết"
+                  },
+                  "notes": "Tên: Nguyễn Thị Bỉm"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_thi_ngo",
+          "name": "Nguyễn Thị Ngọ",
+          "generation": 3,
+          "wife": {
+            "name": "Nguyễn Thị Ngọ",
+            "title": "Cụ Bà"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_thi_bim",
+              "name": "Bà Nguyễn Thị Bỉm & Nguyễn V Vui",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Bỉm"
+              },
+              "husband": {
+                "name": "Nguyễn V Vui"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_hy",
+          "name": "Nguyễn V Hỷ & Nguyễn Thị Íp",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn V Hỷ",
+            "title": "Cụ Ông",
+            "alias": "Phúc Nghĩa",
+            "anniversary": "3-7"
+          },
+          "wife": {
+            "name": "Nguyễn Thị Íp",
+            "title": "Cụ Bà",
+            "alias": "Quảng Lập",
+            "anniversary": "10-12"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_khuyet_early",
+              "name": "Nguyễn Văn Khuyết (chết trẻ)",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Khuyết",
+                "notes": "Chết trẻ"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_quan",
+          "name": "Nguyễn Văn Quản & Nguyễn Thị Ban",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Quản",
+            "title": "Cụ Ông"
+          },
+          "wife": {
+            "name": "Nguyễn Thị Ban",
+            "title": "Cụ Bà",
+            "anniversary": "8-10"
+          },
+          "children": [
+            {
+              "id": "gen4_quan_nguyen_thi_thanh",
+              "name": "Bà Nguyễn Thị Thành & Đỗ Văn Diệu",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Thành",
+                "anniversary": "19-2"
+              },
+              "husband": {
+                "name": "Đỗ Văn Diệu",
+                "alias": "Tứu",
+                "anniversary": "2-1"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_thi_thuan",
+                  "name": "Bà Nguyễn Thị Thuận & Nguyễn Văn Hòa",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Thuận",
+                    "anniversary": "9-2"
+                  },
+                  "husband": {
+                    "name": "Nguyễn Văn Hòa",
+                    "anniversary": "1-8"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_tinh",
+              "name": "Bà Nguyễn Thị Tình & Nguyễn Hữu Đường",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Tình",
+                "anniversary": "21-9"
+              },
+              "husband": {
+                "name": "Nguyễn Hữu Đường"
+              },
+              "children": [
+                {
+                  "id": "gen5_quan_nguyen_van_bien",
+                  "name": "Nguyễn Văn Biên & Nguyễn Thị Bé",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Biên",
+                    "anniversary": "9-2"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Bé",
+                    "anniversary": "27-4"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_lon",
+              "name": "Bà Nguyễn Thị Lớn & Nguyễn Văn Hùng",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Lớn",
+                "anniversary": "10-8"
+              },
+              "husband": {
+                "name": "Nguyễn Văn Hùng"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_chien",
+                  "name": "Nguyễn Văn Chiến & Lại Thị Thi",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Chiến"
+                  },
+                  "wife": {
+                    "name": "Lại Thị Thi"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_phu",
+              "name": "Nguyễn Văn Phú & Nguyễn Thị Xoan",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Phú",
+                "alias": "Mận",
+                "anniversary": "9-11"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Xoan"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_dong",
+                  "name": "Nguyễn Văn Đông & Nguyễn Thị Thuận",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Đông",
+                    "anniversary": "28-3"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Thuận",
+                    "anniversary": "29-9"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_tan",
+              "name": "Bà Nguyễn Thị Tàn & Chồng",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Tàn"
+              },
+              "husband": {
+                "name": "Lê Hữu"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_thi_toan",
+                  "name": "Bà Nguyễn Thị Toàn & Nguyễn Văn Hiền",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Toàn"
+                  },
+                  "husband": {
+                    "name": "Nguyễn Văn Hiền"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_hieu",
+          "name": "Nguyễn Văn Hiệu & Đỗ Thị Diệu",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Hiệu",
+            "title": "Cụ Ông"
+          },
+          "wife": {
+            "name": "Đỗ Thị Diệu",
+            "title": "Cụ Bà",
+            "anniversary": "8-10"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_thi_hoa",
+              "name": "Bà Nguyễn Thị Hoa & Nguyễn Văn Liên",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Hoa",
+                "alias": "Phúc Đạo",
+                "anniversary": "21-1"
+              },
+              "husband": {
+                "name": "Nguyễn Văn Liên"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_man",
+                  "name": "Nguyễn Văn Mẫn & Lê Thị Tình",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Mẫn",
+                    "alias": "Phúc Hữu",
+                    "anniversary": "9-11"
+                  },
+                  "wife": {
+                    "name": "Lê Thị Tình",
+                    "anniversary": "29-8"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_ton",
+              "name": "Bà Nguyễn Thị Tọn",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Tọn"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_thi_thoai",
+                  "name": "Bà Nguyễn Thị Thoại",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Thoại"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_to",
+              "name": "Bà Nguyễn Thị Tỏ",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Tỏ"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_thi_thai",
+                  "name": "Bà Nguyễn Thị Thái",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Thái"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_thuy",
+              "name": "Nguyễn Văn Thủy & Nguyễn Thị Túy",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Thủy",
+                "anniversary": "12-8"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Túy",
+                "anniversary": "29-8"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_quang",
+                  "name": "Nguyễn Văn Quang & Nguyễn Thị Bổng",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Quang"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Bổng"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_khai",
+          "name": "Nguyễn Văn Khải & Phùng Thị Bằng",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Khải",
+            "title": "Cụ Ông"
+          },
+          "wife": {
+            "name": "Phùng Thị Bằng",
+            "title": "Cụ Bà",
+            "anniversary": "20-5"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_thi_cuc",
+              "name": "Bà Nguyễn Thị Cúc",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Cúc"
+              }
+            },
+            {
+              "id": "gen4_vo_cong_thu_phu",
+              "name": "Vợ ông Công Thù Phú",
+              "generation": 4,
+              "wife": {
+                "name": "Vợ ông Công Thù Phú"
+              }
+            },
+            {
+              "id": "gen4_nguyen_van_luan",
+              "name": "Nguyễn Văn Luận & Phùng Thị Thảo",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Luận",
+                "anniversary": "29-4"
+              },
+              "wife": {
+                "name": "Phùng Thị Thảo",
+                "alias": "Bà Thạo",
+                "anniversary": "14-4"
+              },
+              "children": [
+                {
+                  "id": "gen5_luan_quang",
+                  "name": "Nguyễn Văn Quang & Nguyễn Thị Bổng",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Quang"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Bổng"
+                  },
+                  "notes": "Giỗ: 8-10"
+                },
+                {
+                  "id": "gen5_luan_tuyet",
+                  "name": "Bà Nguyễn Thị Tuyết",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Tuyết"
+                  }
+                },
+                {
+                  "id": "gen5_luan_bien",
+                  "name": "Nguyễn Văn Biên & Nguyễn Thị Thái",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Biên"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Thái"
+                  }
+                },
+                {
+                  "id": "gen5_luan_cuc",
+                  "name": "Bà Nguyễn Thị Cúc (chết trẻ)",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Cúc",
+                    "notes": "Chết trẻ"
+                  }
+                },
+                {
+                  "id": "gen5_luan_hai",
+                  "name": "Nguyễn Văn Hải (Hùng)",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Hải",
+                    "alias": "Hùng"
+                  }
+                },
+                {
+                  "id": "gen5_luan_tho",
+                  "name": "Nguyễn Văn Thọ",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Văn Thọ"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_ty",
+              "name": "Bà Nguyễn Thị Tý (Bà Thạo)",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Tý",
+                "alias": "Bà Thạo"
+              }
+            },
+            {
+              "id": "gen4_nguyen_van_dien_early",
+              "name": "Nguyễn Văn Điền (chết trẻ)",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Điền",
+                "notes": "Chết trẻ"
+              }
+            },
+            {
+              "id": "gen4_nguyen_van_bien",
+              "name": "Nguyễn Văn Biên & Nguyễn Thị Thái",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Văn Biên",
+                "anniversary": "8-3"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Thái"
+              },
+              "children": [
+                {
+                  "id": "gen5_bien_thao",
+                  "name": "Bà Nguyễn Thị Thảo (Hằng) & Chồng",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Thảo",
+                    "alias": "Hằng"
+                  },
+                  "husband": {
+                    "name": "Họ Hữu (Thanh)"
+                  }
+                },
+                {
+                  "id": "gen5_bien_com",
+                  "name": "Bà Nguyễn Thị Com",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Com"
+                  }
+                },
+                {
+                  "id": "gen5_bien_hao",
+                  "name": "Bà Nguyễn Thị Hảo (Thái)",
+                  "generation": 5,
+                  "wife": {
+                    "name": "Nguyễn Thị Hảo",
+                    "alias": "Thái"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gen2_nguyen_v_ngo",
+      "name": "Nguyễn V Ngọ & Hiệu Diệu Giáp",
+      "generation": 2,
+      "husband": {
+        "name": "Nguyễn V Ngọ",
+        "title": "Cụ Ông",
+        "alias": "Hiệu Phúc Núi",
+        "anniversary": "23-12"
+      },
+      "wife": {
+        "name": "Cụ Bà",
+        "alias": "Hiệu Diệu Giáp",
+        "anniversary": "4-1"
+      },
+      "notes": "Em trai: Nguyễn Công Hiệp, Phúc Thận, Giỗ: 24-8"
+    },
+    {
+      "id": "gen2_nguyen_van_tu",
+      "name": "Nguyễn Văn Tự & Phùng Thị Điệu",
+      "generation": 2,
+      "husband": {
+        "name": "Nguyễn Văn Tự",
+        "title": "Cụ Ông",
+        "alias": "Hiệu Phúc Cận",
+        "anniversary": "6-9"
+      },
+      "wife": {
+        "name": "Phùng Thị Điệu",
+        "title": "Cụ Bà",
+        "alias": "Hiệu Diệu Tín",
+        "anniversary": "9-5"
+      }
+    },
+    {
+      "id": "gen2_ly_thuc",
+      "name": "Cụ Lý Thực",
+      "generation": 2,
+      "husband": {
+        "name": "Cụ Lý Thực"
+      }
+    },
+    {
+      "id": "gen2_ly_van_gia",
+      "name": "Cụ Bà Lý Văn (Gia) & Chồng họ Nguyễn Khắc",
+      "generation": 2,
+      "wife": {
+        "name": "Cụ Bà Lý Văn",
+        "alias": "Gia"
+      },
+      "husband": {
+        "name": "Cụ Ông họ Nguyễn Khắc"
+      },
+      "children": [
+        {
+          "id": "gen3_khac_van",
+          "name": "Nguyễn Khắc Văn",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Khắc Văn"
+          },
+          "children": [
+            {
+              "id": "gen4_khac_nghi",
+              "name": "Nguyễn Khắc Nghị",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Khắc Nghị"
+              },
+              "children": [
+                {
+                  "id": "gen5_khac_thang",
+                  "name": "Nguyễn Khắc Thắng",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Khắc Thắng"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_khac_sang",
+          "name": "Nguyễn Khắc Sang",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Khắc Sang"
+          },
+          "children": [
+            {
+              "id": "gen4_khac_nghiem",
+              "name": "Nguyễn Khắc Nghiêm",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Khắc Nghiêm"
+              },
+              "children": [
+                {
+                  "id": "gen5_khac_nghien",
+                  "name": "Nguyễn Khắc Nghiên",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Khắc Nghiên"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_khac_nhung",
+          "name": "Nguyễn Khắc Nhũng",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Khắc Nhũng"
+          },
+          "children": [
+            {
+              "id": "gen4_khac_nhuong",
+              "name": "Nguyễn Khắc Nhượng",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Khắc Nhượng"
+              },
+              "children": [
+                {
+                  "id": "gen5_khac_luyen",
+                  "name": "Nguyễn Khắc Luyện",
+                  "generation": 5,
+                  "husband": {
+                    "name": "Nguyễn Khắc Luyện"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_kien_ba",
+          "name": "Cụ Kiên Bá (Bà Cả) & Chồng họ Nguyễn Đình",
+          "generation": 3,
+          "wife": {
+            "name": "Cụ Kiên Bá",
+            "alias": "Bà Cả"
+          },
+          "husband": {
+            "name": "Cụ Ông họ Nguyễn Đình"
+          },
+          "children": [
+            {
+              "id": "gen4_dinh_chi",
+              "name": "Nguyễn Đình Chỉ & Vợ (Con ông Thường)",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Đình Chỉ"
+              },
+              "wife": {
+                "name": "Ông Thường",
+                "title": "Vợ"
+              },
+              "children": [
+                { "id": "gen5_ly", "name": "Ô. Lý", "generation": 5, "husband": { "name": "Ô. Lý" } },
+                { "id": "gen5_lang", "name": "Ô. Lãng", "generation": 5, "husband": { "name": "Ô. Lãng" } }
+              ]
+            },
+            {
+              "id": "gen4_dinh_ngoc",
+              "name": "Nguyễn Đình Ngọc & Thân",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Đình Ngọc"
+              },
+              "wife": {
+                "name": "Thân",
+                "title": "Vợ"
+              },
+              "children": [
+                { "id": "gen5_thach", "name": "Ô. Thạch", "generation": 5, "husband": { "name": "Ô. Thạch" } },
+                { "id": "gen5_hien", "name": "Ô. Hiền", "generation": 5, "husband": { "name": "Ô. Hiền" } },
+                { "id": "gen5_ngot", "name": "Ô. Ngọt", "generation": 5, "husband": { "name": "Ô. Ngọt" } },
+                { "id": "gen5_mot", "name": "Ô. Mọt", "generation": 5, "husband": { "name": "Ô. Mọt" } },
+                { "id": "gen5_thu_bong", "name": "Ô. Thu Bổng", "generation": 5, "husband": { "name": "Ô. Thu Bổng" } }
+              ]
+            },
+            {
+              "id": "gen4_dinh_nghi",
+              "name": "Nguyễn Đình Nghị & Minh",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Đình Nghị"
+              },
+              "wife": {
+                "name": "Minh",
+                "title": "Vợ"
+              },
+              "children": [
+                { "id": "gen5_duc", "name": "Ô. Đức", "generation": 5, "husband": { "name": "Ô. Đức" } },
+                { "id": "gen5_tho_2", "name": "Ô. Thọ", "generation": 5, "husband": { "name": "Ô. Thọ" } },
+                { "id": "gen5_loc", "name": "Ô. Lộc", "generation": 5, "husband": { "name": "Ô. Lộc" } },
+                { "id": "gen5_thanh", "name": "B. Thanh", "generation": 5, "wife": { "name": "B. Thanh" } },
+                { "id": "gen5_diep", "name": "B. Diệp", "generation": 5, "wife": { "name": "B. Diệp" } },
+                { "id": "gen5_xan", "name": "B. Xan/Xanh", "generation": 5, "wife": { "name": "B. Xan/Xanh" } }
+              ]
+            },
+            {
+              "id": "gen4_dinh_nguyen",
+              "name": "Nguyễn Đình Nguyện",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Đình Nguyện"
+              }
+            },
+            {
+              "id": "gen4_dinh_thi",
+              "name": "Nguyễn Đình Thị",
+              "generation": 4,
+              "husband": {
+                "name": "Nguyễn Đình Thị"
+              },
+              "children": [
+                { "id": "gen5_tuoc", "name": "B. Tước", "generation": 5, "wife": { "name": "B. Tước" } },
+                { "id": "gen5_danh", "name": "B. Đành", "generation": 5, "wife": { "name": "B. Đành" } },
+                { "id": "gen5_thi_thuc", "name": "B. Thị Thực", "generation": 5, "wife": { "name": "B. Thị Thực" } },
+                { "id": "gen5_phu", "name": "B. Phù", "generation": 5, "wife": { "name": "B. Phù" } },
+                { "id": "gen5_lam", "name": "Ô. Làm", "generation": 5, "husband": { "name": "Ô. Làm" } }
+              ]
+            },
+            {
+              "id": "gen4_thi_gai",
+              "name": "Nguyễn Thị Gái & Đoàn Nghịch",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Gái"
+              },
+              "husband": {
+                "name": "Đoàn Nghịch"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gen2_cai_con",
+      "name": "Cụ Ông Cai Còn",
+      "generation": 2,
+      "husband": {
+        "name": "Cai Còn",
+        "title": "Cụ Ông"
+      },
+      "children": [
+        {
+          "id": "gen3_chanh_chuot",
+          "name": "Bà Chành Chuột",
+          "generation": 3,
+          "wife": {
+            "name": "Bà Chành Chuột"
+          }
+        },
+        {
+          "id": "gen3_diem_bim",
+          "name": "Cụ Điệm Bím (Cụ ông Trại Choét)",
+          "generation": 3,
+          "wife": {
+            "name": "Cụ Điệm Bím"
+          },
+          "husband": {
+            "name": "Cụ ông Trại Choét"
+          },
+          "children": [
+            {
+              "id": "gen4_soan_nghich",
+              "name": "Ông Soạn Nghịch",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Soạn Nghịch"
+              }
+            },
+            {
+              "id": "gen4_tra",
+              "name": "Ông Trà & Nguyễn Thị Thê",
+              "generation": 4,
+              "husband": {
+                "name": "Ông Trà"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Thê",
+                "notes": "Quê quán: Ở Cầu Hai - Phú Thọ"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_lien",
+          "name": "Nguyễn Văn Liên",
+          "generation": 3,
+          "husband": {
+            "name": "Nguyễn Văn Liên"
+          },
+          "children": [
+            {
+              "id": "gen4_thi_thi",
+              "name": "Bà Nguyễn Thị Thì & Chồng",
+              "generation": 4,
+              "wife": {
+                "name": "Nguyễn Thị Thì",
+                "notes": "Tiếp Lộn (Ở Con Trạm)"
+              },
+              "husband": {
+                "name": "Ô. Cầu Hai - Phú Thọ"
+              }
+            },
+            {
+              "id": "gen4_tuoc_danh",
+              "name": "Bà Tước, Bà Đành, Bà Thị Thực & Chồng",
+              "generation": 4,
+              "wife": {
+                "name": "Bà Tước / Bà Đành / Bà Thị Thực",
+                "notes": "Ở Con Trạm"
+              },
+              "husband": {
+                "name": "Ô. Hùng Sơn Hùng - Tuyên Quang"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_tuyen_early",
+          "name": "Bà Tuyên (chết trẻ)",
+          "generation": 3,
+          "wife": {
+            "name": "Bà Tuyên",
+            "notes": "Chết trẻ"
+          }
+        }
+      ]
+    }
+  ]
+}
