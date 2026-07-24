@@ -1366,7 +1366,7 @@ class FamilyTreeVisualizer {
     
     this.cardWidth = 150;
     this.cardHeight = 180;
-    this.levelSpacing = 440;
+    this.levelSpacing = 260;
     this.nodeSpacing = 200;
     
     this.activeNodeId = null;
