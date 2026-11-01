@@ -28,6 +28,8 @@ async function checkViewports(browser) {
     ["laptop", 1440, 900, false], ["phone", 390, 844, false], ["small-phone", 320, 667, false]
   ]) {
     const page = await open(browser, width, height);
+    await page.locator("#btn-view-overview").click();
+    await settle(page);
     const metrics = await page.evaluate(() => {
       const container = document.getElementById("overview-container");
       const bounds = container.getBoundingClientRect();
@@ -89,6 +91,7 @@ async function treeFits(page) {
 
 async function checkInteractions(browser) {
   const page = await open(browser, 1920, 1080);
+  await page.locator("#btn-view-overview").click();
   await page.selectOption("#branch-select", "gen2_nguyen_v_ngo");
   assert.equal(await page.locator(".overview-person").count(), 26);
   await search(page, "Nguyễn Thị Tĩn Lớn", /Nguyễn Thị Tĩn Lớn$/);
@@ -103,6 +106,9 @@ async function checkInteractions(browser) {
   await page.locator("#clear-search-btn").click();
   await page.selectOption("#branch-select", "gen2_cai_con");
   await page.locator("#btn-view-tree").click();
+  await settle(page);
+  assert.equal(await page.locator("g.node-group").count(), 6);
+  await page.locator("#btn-tree-expand").click();
   await settle(page);
   assert.equal(await page.locator("g.node-group").count(), 20);
   await treeFits(page);
@@ -130,6 +136,8 @@ async function checkInteractions(browser) {
   await page.selectOption("#branch-select", "all");
   await page.locator("#btn-view-tree").click();
   await settle(page);
+  await page.locator("#btn-tree-expand").click();
+  await settle(page);
   assert.equal(await page.locator("g.node-group").count(), 231);
   await treeFits(page);
   await page.locator("#btn-view-overview").click();
@@ -145,6 +153,7 @@ async function checkInteractions(browser) {
   await settle(page);
   assert.equal(await page.locator("html").getAttribute("data-theme"), "dark");
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator("#btn-view-overview").click();
   await page.locator("#btn-theme-toggle").click();
   await settle(page);
   await page.selectOption("#branch-select", "gen2_nguyen_van_tu");
@@ -163,6 +172,7 @@ async function checkInteractions(browser) {
   assert.ok(await page.locator("#btn-rotate-tree").isVisible());
   assert.ok(await page.locator("#btn-zoom-fit").isVisible());
   await page.locator("#btn-rotate-tree").click();
+  await page.locator("#btn-zoom-fit").click();
   await settle(page);
   await treeFits(page);
   await page.locator("#btn-view-overview").click();
@@ -173,9 +183,51 @@ async function checkInteractions(browser) {
   console.log("PASS interactions: branch filters, search, relationships, collapsed ancestors, zoom, rotation, fullscreen, themes and mobile details");
 }
 
+async function checkTreeDefault(browser) {
+  for (const [width, height] of [[1920, 1080], [390, 844]]) {
+    const page = await open(browser, width, height);
+    assert.equal(await page.locator("body").getAttribute("data-view"), "tree");
+    assert.equal(await page.locator("g.node-group").count(), 7);
+    assert.equal(await page.locator("path.link").count(), 6);
+    assert.equal(await page.locator("g.generation-guide").count(), 2);
+    assert.equal(await page.locator("#btn-view-tree").getAttribute("aria-pressed"), "true");
+    const zoom = await page.evaluate(() => d3.zoomTransform(document.querySelector("#tree-container svg")).k);
+    assert.ok(zoom >= 0.85, "initial names must remain readable");
+    await screenshot(page, width > 768 ? "tree-desktop" : "tree-phone");
+    const branch = page.locator("g.node-group[data-node-id='gen2_cai_con']");
+    await branch.focus();
+    await page.keyboard.press("ArrowDown");
+    await settle(page);
+    assert.equal(await page.locator("g.node-group").count(), 11);
+    await branch.focus();
+    await page.keyboard.press("ArrowUp");
+    await settle(page);
+    assert.equal(await page.locator("g.node-group").count(), 7);
+    await page.locator("#btn-tree-expand").click();
+    await settle(page);
+    assert.equal(await page.locator("g.node-group").count(), 231);
+    assert.equal(await page.locator("path.link").count(), 230);
+    assert.equal(await page.locator("g.generation-guide").count(), 5);
+    if (width > 768) {
+      await page.locator("#btn-tree-collapse").click();
+      await settle(page);
+      assert.equal(await page.locator("g.node-group").count(), 7);
+    }
+    await page.locator("#search-input").fill("Nguyễn Văn Thìn");
+    await page.locator(".search-item-name").filter({ hasText: /^Nguyễn Văn Thìn$/ }).click();
+    await page.locator("#btn-show-on-tree").click();
+    await settle(page);
+    assert.equal(await page.locator("#details-sidebar").getAttribute("aria-hidden"), "true");
+    assert.equal(await page.locator("g.node-group[data-node-id='gen3_nguyen_van_thin']").count(), 1);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  }
+  console.log("PASS default tree: 6 connected branches, readable names, keyboard expansion, all 231 entries and search-to-tree navigation");
+}
+
 async function checkTouch(browser) {
   const page = await open(browser, 390, 844);
-  const ancestor = await page.locator(".root-person").boundingBox();
+  const ancestor = await page.locator("g.node-group[data-node-id='root_ancestor'] .node-rect").boundingBox();
   await page.touchscreen.tap(ancestor.x + 30, ancestor.y + 20);
   assert.equal(await page.locator("#details-sidebar").getAttribute("aria-hidden"), "false");
   const close = await page.locator("#btn-close-sidebar").boundingBox();
@@ -205,6 +257,7 @@ async function checkTouch(browser) {
 (async () => {
   const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined, headless: true });
   try {
+    await checkTreeDefault(browser);
     await checkViewports(browser);
     await checkInteractions(browser);
     await checkTouch(browser);

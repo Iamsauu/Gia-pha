@@ -3025,10 +3025,10 @@ class FamilyTreeVisualizer {
     this.width = this.container.clientWidth;
     this.height = this.container.clientHeight;
     
-    this.cardWidth = 196;
-    this.cardHeight = 104;
-    this.levelSpacing = 260;
-    this.nodeSpacing = 126;
+    this.cardWidth = window.innerWidth <= 768 ? 184 : 212;
+    this.cardHeight = 116;
+    this.levelSpacing = window.innerWidth <= 768 ? 220 : 260;
+    this.nodeSpacing = 152;
     
     this.activeNodeId = null;
     this.searchQuery = "";
@@ -3036,7 +3036,7 @@ class FamilyTreeVisualizer {
     this.compareLcaId = null;
     this.rootNode = null; // D3 root
     this.nodesMap = {}; // Flat lookup map
-    this.orientation = "horizontal";
+    this.orientation = window.innerWidth <= 768 ? "horizontal" : "vertical";
     this.viewMode = "tree";
     this.branchId = "all";
     this.autoFit = true;
@@ -3050,6 +3050,7 @@ class FamilyTreeVisualizer {
   // Initialize the tree data structure for toggle functionality
   initTree() {
     this.rootNode = d3.hierarchy(this.rawData);
+    this.collapseBelow(1);
     this.rootNode.x0 = this.height / 2;
     this.rootNode.y0 = 0;
     
@@ -3126,6 +3127,46 @@ class FamilyTreeVisualizer {
     this.resizeObserver.observe(this.container);
   }
 
+  collapseBelow(depth) {
+    this.rootNode.eachAfter(node => {
+      if (node.depth >= depth && node.children) {
+        node._children = node.children;
+        node.children = null;
+      }
+    });
+  }
+
+  toggleNode(node) {
+    if (node.children) {
+      node._children = node.children;
+      node.children = null;
+    } else {
+      node.children = node._children;
+      node._children = null;
+    }
+    this.render(node);
+    if (this.autoFit) this.fitToScreen();
+  }
+
+  expandAll() {
+    const expand = node => {
+      if (node._children) {
+        node.children = node._children;
+        node._children = null;
+      }
+      (node.children || []).forEach(expand);
+    };
+    expand(this.rootNode);
+    this.render(this.rootNode);
+    this.fitToScreen(300, false);
+  }
+
+  branchColor(node) {
+    const branch = this.getLineagePath(node.data.id)[1];
+    const index = branch ? this.rawData.children.findIndex(child => child.id === branch.id) : -1;
+    return ["#16856c", "#2377b3", "#8160bd", "#b57c16", "#be577a", "#168b90"][index] || "#16856c";
+  }
+
   setBranch(branchId) {
     this.branchId = branchId;
     const data = branchId === "all" ? this.rawData : {
@@ -3133,6 +3174,7 @@ class FamilyTreeVisualizer {
       children: this.rawData.children.filter(branch => branch.id === branchId)
     };
     this.rootNode = d3.hierarchy(data);
+    this.collapseBelow(branchId === "all" || window.innerWidth <= 768 ? 1 : 2);
     this.overview?.setBranch(branchId);
     if (this.viewMode === "tree") {
       this.render(this.rootNode);
@@ -3152,14 +3194,14 @@ class FamilyTreeVisualizer {
       button.setAttribute("aria-pressed", String(name === mode));
     }
     document.getElementById("view-hint").textContent = mode === "overview"
-      ? "Chạm vào tên để xem thông tin" : "Kéo để di chuyển · Cuộn hoặc chụm hai ngón để thu phóng";
+      ? "Chạm vào tên để xem thông tin" : "Chạm + để mở nhánh · Kéo để di chuyển · Chụm hai ngón để phóng to";
     if (mode === "overview") {
       this.overview.fit();
     } else {
       this.setBranch(document.getElementById("branch-select").value);
       this.width = this.container.clientWidth;
       this.height = this.container.clientHeight;
-      this.fitToScreen(0);
+      this.fitToScreen(0, window.innerWidth <= 768);
     }
   }
 
@@ -3178,7 +3220,8 @@ class FamilyTreeVisualizer {
     this.overview?.updateHighlights();
     if (wasOpen) {
       const previous = this.lastSelectionButton;
-      const fallback = this.overview?.container.querySelector(`[data-node-id="${selectedId}"]`);
+      const focusContainer = this.viewMode === "tree" ? this.container : this.overview?.container;
+      const fallback = focusContainer?.querySelector(`[data-node-id="${selectedId}"]`);
       const target = previous?.isConnected && previous.getClientRects().length ? previous : fallback;
       (target || document.getElementById("search-input")).focus({ preventScroll: true });
     }
@@ -3213,6 +3256,26 @@ class FamilyTreeVisualizer {
     });
 
     // Render Links with orthogonal step lines
+    const guides = [...new Map(nodes.map(node => [node.data.generation, node])).values()];
+    const minX = d3.min(nodes, node => node.x) - (isHorizontal ? this.cardHeight : this.cardWidth) / 2 - 40;
+    const maxX = d3.max(nodes, node => node.x) + (isHorizontal ? this.cardHeight : this.cardWidth) / 2 + 40;
+    const guideGroups = this.gAll.selectAll("g.generation-guide").data(guides, node => node.data.generation)
+      .join(enter => {
+        const group = enter.append("g").attr("class", "generation-guide").attr("aria-hidden", "true");
+        group.append("line");
+        group.append("text");
+        return group;
+      });
+    guideGroups.select("line")
+      .attr("x1", node => isHorizontal ? node.y - this.cardWidth / 2 - 26 : minX)
+      .attr("x2", node => isHorizontal ? node.y - this.cardWidth / 2 - 26 : maxX)
+      .attr("y1", node => isHorizontal ? minX : node.y - this.cardHeight / 2 - 26)
+      .attr("y2", node => isHorizontal ? maxX : node.y - this.cardHeight / 2 - 26);
+    guideGroups.select("text")
+      .attr("x", node => isHorizontal ? node.y - this.cardWidth / 2 - 26 : minX)
+      .attr("y", node => isHorizontal ? minX - 12 : node.y - this.cardHeight / 2 - 38)
+      .text(node => `ĐỜI ${node.data.generation}`);
+
     const linkGenerator = d => {
       const source = d.source;
       const target = d.target;
@@ -3235,7 +3298,8 @@ class FamilyTreeVisualizer {
       });
       
     // Transition links to their new position
-    const linkUpdate = linkElements.merge(linkEnter);
+    const linkUpdate = linkElements.merge(linkEnter)
+      .style("--branch-color", d => this.branchColor(d.target));
     linkUpdate.transition()
       .duration(duration)
       .attr("class", d => {
@@ -3264,7 +3328,7 @@ class FamilyTreeVisualizer {
       .remove();
 
     // Render Nodes Groups
-    document.getElementById("view-status").textContent = `${nodes.length} mục trên sơ đồ · ${this.branchId === "all" ? "Tất cả các nhánh" : "Nhánh đã chọn"}`;
+    document.getElementById("view-status").textContent = `${nodes.length}/${Object.keys(this.nodesMap).length} mục trên cây · ${this.branchId === "all" ? "6 nhánh gia đình" : "Nhánh đã chọn"}`;
 
     const nodeElements = this.gAll.selectAll("g.node-group")
       .data(nodes, d => d.data.id);
@@ -3278,7 +3342,13 @@ class FamilyTreeVisualizer {
       .attr("tabindex", 0)
       .attr("aria-label", d => `Đời ${d.data.generation}: ${d.data.name}`)
       .on("keydown", (event, d) => {
-        if (event.key === "Enter" || event.key === " ") {
+        if ((event.key === "ArrowDown" || event.key === "ArrowRight") && d._children) {
+          event.preventDefault();
+          this.toggleNode(d);
+        } else if ((event.key === "ArrowUp" || event.key === "ArrowLeft") && d.children) {
+          event.preventDefault();
+          this.toggleNode(d);
+        } else if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           this.selectNode(d.data.id);
         }
@@ -3293,9 +3363,9 @@ class FamilyTreeVisualizer {
     // Add expand/collapse button
     nodeEnter.append("circle")
       .attr("class", "node-toggle-btn")
-      .attr("cx", isHorizontal ? (this.cardWidth / 2 + 10) : 0)
-      .attr("cy", isHorizontal ? 0 : (this.cardHeight / 2 + 10))
-      .attr("r", 12)
+      .attr("cx", isHorizontal ? (this.cardWidth / 2 + 20) : 0)
+      .attr("cy", isHorizontal ? 0 : (this.cardHeight / 2 + 20))
+      .attr("r", 19)
       .style("fill", d => d._children ? "var(--accent-primary)" : "var(--bg-card)")
       .style("stroke", "var(--border-color)")
       .style("stroke-width", "2px")
@@ -3303,40 +3373,24 @@ class FamilyTreeVisualizer {
       .style("display", d => (d.children || d._children) ? "block" : "none")
       .on("click", (event, d) => {
         event.stopPropagation();
-        // Toggle children
-        if (d.children) {
-          d._children = d.children;
-          d.children = null;
-        } else {
-          d.children = d._children;
-          d._children = null;
-        }
-        this.render(d);
-        if (this.autoFit) this.fitToScreen();
+        this.toggleNode(d);
       });
       
     // Plus/Minus icon inside circle
     nodeEnter.append("text")
       .attr("class", "node-toggle-icon")
-      .attr("x", isHorizontal ? (this.cardWidth / 2 + 10) : 0)
-      .attr("y", isHorizontal ? 4 : (this.cardHeight / 2 + 14))
+      .attr("x", isHorizontal ? (this.cardWidth / 2 + 20) : 0)
+      .attr("y", isHorizontal ? 6 : (this.cardHeight / 2 + 26))
       .attr("text-anchor", "middle")
       .style("cursor", "pointer")
       .style("fill", d => d._children ? "#fff" : "var(--text-main)")
       .style("font-weight", "bold")
+      .style("font-size", "23px")
       .style("display", d => (d.children || d._children) ? "block" : "none")
       .text(d => d._children ? "+" : "-")
       .on("click", (event, d) => {
         event.stopPropagation();
-        if (d.children) {
-          d._children = d.children;
-          d.children = null;
-        } else {
-          d.children = d._children;
-          d._children = null;
-        }
-        this.render(d);
-        if (this.autoFit) this.fitToScreen();
+        this.toggleNode(d);
       });
       
     // Create node cards using SVG (safe and stable vertical cards)
@@ -3353,6 +3407,12 @@ class FamilyTreeVisualizer {
       .attr("rx", 6)
       .attr("ry", 6);
       
+    nodeEnter.append("rect")
+      .attr("class", "node-branch-band")
+      .attr("x", -cardHalfW + 1).attr("y", -cardHalfH + 1)
+      .attr("width", this.cardWidth - 2).attr("height", 5).attr("rx", 3)
+      .attr("fill", d => this.branchColor(d));
+
     // Wrap full names rather than cutting them off on compact cards.
     nodeEnter.append("title").text(d => d.data.name);
     const wrapName = (element, name, y, size) => {
@@ -3370,7 +3430,7 @@ class FamilyTreeVisualizer {
           line.pop();
           row.text(line.join(" "));
           line = [word];
-          row = label.append("tspan").attr("x", 0).attr("dy", 13).text(word);
+          row = label.append("tspan").attr("x", 0).attr("dy", 16).text(word);
         }
       }
       return label;
@@ -3381,20 +3441,26 @@ class FamilyTreeVisualizer {
       const spouse = d.data[d.data.bloodline === "wife" ? "husband" : "wife"];
       d3.select(element).append("text")
         .attr("class", "node-desc").attr("text-anchor", "middle")
-        .attr("y", -35).attr("font-size", 9)
+        .attr("y", -36).attr("font-size", 11)
         .text(`ĐỜI ${d.data.generation} · ${primary?.title || ""}`);
-      wrapName(element, primary?.name || d.data.name, spouse ? -15 : 0, 13)
+      wrapName(element, primary?.name || d.data.name, spouse ? -13 : -4, 15)
         .classed("bloodline", true);
-      if (spouse) wrapName(element, spouse.name, 17, 11).classed("spouse", true);
+      if (spouse) wrapName(element, spouse.name, 17, 12).classed("spouse", true);
       d3.select(element).append("text")
-        .attr("class", "node-desc").attr("text-anchor", "middle")
-        .attr("y", 43).attr("font-size", 9)
-        .text(d.data.children?.length ? `${d.data.children.length} con` : "");
+        .attr("class", "node-desc node-descendants").attr("text-anchor", "middle")
+        .attr("y", 47).attr("font-size", 10);
     });
 
     // Update phase
     const mergedNode = nodeElements.merge(nodeEnter);
     
+    mergedNode.classed("root-node", d => d.depth === 0)
+      .style("--branch-color", d => this.branchColor(d))
+      .attr("aria-expanded", d => d.children ? "true" : d._children ? "false" : null);
+    mergedNode.select(".node-descendants").text(d => {
+      const descendants = FamilyOverview.count(d.data) - 1;
+      return descendants ? `${descendants} hậu duệ${d._children ? " · Nhấn + để mở" : ""}` : "";
+    });
     mergedNode.transition()
       .duration(duration)
       .attr("transform", d => isHorizontal ? `translate(${d.y}, ${d.x})` : `translate(${d.x}, ${d.y})`)
@@ -3402,13 +3468,13 @@ class FamilyTreeVisualizer {
       
     // Update toggle icons
     mergedNode.select(".node-toggle-btn")
-      .attr("cx", isHorizontal ? (this.cardWidth / 2 + 10) : 0)
-      .attr("cy", isHorizontal ? 0 : (this.cardHeight / 2 + 10))
+      .attr("cx", isHorizontal ? (this.cardWidth / 2 + 20) : 0)
+      .attr("cy", isHorizontal ? 0 : (this.cardHeight / 2 + 20))
       .style("fill", d => d._children ? "var(--accent-primary)" : "var(--bg-card)")
       .style("display", d => (d.children || d._children) ? "block" : "none");
     mergedNode.select(".node-toggle-icon")
-      .attr("x", isHorizontal ? (this.cardWidth / 2 + 10) : 0)
-      .attr("y", isHorizontal ? 4 : (this.cardHeight / 2 + 14))
+      .attr("x", isHorizontal ? (this.cardWidth / 2 + 20) : 0)
+      .attr("y", isHorizontal ? 6 : (this.cardHeight / 2 + 26))
       .style("fill", d => d._children ? "#fff" : "var(--text-main)")
       .style("display", d => (d.children || d._children) ? "block" : "none")
       .text(d => d._children ? "+" : "-");
@@ -3541,20 +3607,22 @@ class FamilyTreeVisualizer {
       d3.zoomIdentity.translate(width / 2 - x * scale, height / 2 - y * scale).scale(scale));
   }
 
-  fitToScreen(duration = 300) {
+  fitToScreen(duration = 300, readable = this.readableZoom || false) {
     if (!this.rootNode || this.container.hidden) return;
     const nodes = this.rootNode.descendants();
     if (!nodes.length) return;
     this.autoFit = true;
+    this.readableZoom = readable;
     const horizontal = this.orientation === "horizontal";
-    const xMin = d3.min(nodes, d => horizontal ? d.y : d.x) - this.cardWidth / 2 - 28;
-    const xMax = d3.max(nodes, d => horizontal ? d.y : d.x) + this.cardWidth / 2 + 28;
-    const yMin = d3.min(nodes, d => horizontal ? d.x : d.y) - this.cardHeight / 2 - 28;
-    const yMax = d3.max(nodes, d => horizontal ? d.x : d.y) + this.cardHeight / 2 + 28;
+    const xMin = d3.min(nodes, d => horizontal ? d.y : d.x) - this.cardWidth / 2 - 64;
+    const xMax = d3.max(nodes, d => horizontal ? d.y : d.x) + this.cardWidth / 2 + 64;
+    const yMin = d3.min(nodes, d => horizontal ? d.x : d.y) - this.cardHeight / 2 - 64;
+    const yMax = d3.max(nodes, d => horizontal ? d.x : d.y) + this.cardHeight / 2 + 64;
     const { width, height } = this.availableViewport();
-    const scale = Math.min((width - 32) / (xMax - xMin), (height - 32) / (yMax - yMin), 1.4);
+    const fittedScale = Math.min((width - 32) / (xMax - xMin), (height - 32) / (yMax - yMin), 1.4);
+    const scale = readable ? Math.max(0.85, fittedScale) : fittedScale;
     const transform = d3.zoomIdentity
-      .translate(width / 2 - (xMin + xMax) * scale / 2, height / 2 - (yMin + yMax) * scale / 2)
+      .translate(width / 2 - (xMin + xMax) * scale / 2 - (readable && width >= 360 ? 12 : 0), height / 2 - (yMin + yMax) * scale / 2)
       .scale(scale);
     this.svg.interrupt();
     if (duration > 0 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -3971,7 +4039,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const visualizer = new FamilyTreeVisualizer("tree-container", familyData);
   
   visualizer.overview = new FamilyOverview(document.getElementById("overview-container"), visualizer);
-  visualizer.setViewMode("overview");
+  visualizer.setViewMode("tree");
   const branchSelect = document.getElementById("branch-select");
   for (const branch of familyData.children) {
     const option = document.createElement("option");
@@ -3982,6 +4050,17 @@ document.addEventListener("DOMContentLoaded", () => {
   branchSelect.addEventListener("change", () => {
     visualizer.closeSidebar();
     visualizer.setBranch(branchSelect.value);
+  });
+  document.getElementById("btn-tree-expand").addEventListener("click", () => visualizer.expandAll());
+  document.getElementById("btn-tree-collapse").addEventListener("click", () => {
+    visualizer.closeSidebar();
+    visualizer.setBranch(branchSelect.value);
+  });
+  document.getElementById("btn-show-on-tree").addEventListener("click", () => {
+    const selected = visualizer.activeNodeId;
+    visualizer.closeSidebar();
+    visualizer.setViewMode("tree");
+    if (selected) visualizer.selectNode(selected, false);
   });
   document.getElementById("btn-view-overview").addEventListener("click", () => visualizer.setViewMode("overview"));
   document.getElementById("btn-view-tree").addEventListener("click", () => visualizer.setViewMode("tree"));
@@ -4023,7 +4102,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-zoom-fit").addEventListener("click", () => {
     visualizer.closeSidebar();
     if (visualizer.viewMode === "overview") visualizer.overview.fit();
-    else visualizer.fitToScreen();
+    else visualizer.fitToScreen(300, false);
   });
   
   // Keep orientation controls available in the diagram toolbar.

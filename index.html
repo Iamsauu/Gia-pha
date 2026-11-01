@@ -54,8 +54,8 @@
 
   <nav class="view-toolbar" aria-label="Cách xem gia phả">
     <div class="view-switch" role="group" aria-label="Chế độ xem">
-      <button id="btn-view-overview" class="view-tab active" aria-pressed="true">Tổng quan</button>
-      <button id="btn-view-tree" class="view-tab" aria-pressed="false">Sơ đồ</button>
+      <button id="btn-view-tree" class="view-tab active" aria-pressed="true">Cây gia phả</button>
+      <button id="btn-view-overview" class="view-tab" aria-pressed="false">Toàn bộ gia phả</button>
     </div>
     <label class="branch-filter" for="branch-select">
       <span>Nhánh</span>
@@ -64,6 +64,10 @@
       </select>
     </label>
     <div class="view-tools">
+      <div class="tree-depth-controls">
+        <button id="btn-tree-collapse" class="tool-button">Thu gọn</button>
+        <button id="btn-tree-expand" class="tool-button">Mở hết</button>
+      </div>
       <div class="control-group diagram-controls">
         <button id="btn-zoom-out" class="btn-control" title="Thu nhỏ" aria-label="Thu nhỏ">−</button>
         <output id="zoom-level" aria-label="Mức thu phóng">100%</output>
@@ -74,6 +78,7 @@
       <button id="btn-fullscreen" class="btn-control" title="Toàn màn hình" aria-label="Bật toàn màn hình">⛶</button>
     </div>
   </nav>
+  <div class="tree-guide" id="tree-guide"><span class="tree-guide-symbol" aria-hidden="true">⌘</span><span><strong>Khám phá từng nhánh</strong><br>Chạm dấu + để mở hậu duệ. Chọn tên để xem chi tiết.</span></div>
 
   <!-- Main Workspace -->
   <main class="app-main">
@@ -98,6 +103,7 @@
           <span class="generation-badge" id="sidebar-gen-badge">Đời 1</span>
           <h2 id="sidebar-name">Tên Thành Viên</h2>
           <p id="sidebar-notes" class="member-subtitle">Ghi chú thành viên</p>
+          <button id="btn-show-on-tree" class="tool-button">Xem trên cây gia phả <span aria-hidden="true">↗</span></button>
         </div>
 
         <hr class="divider">
