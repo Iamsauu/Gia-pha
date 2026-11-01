@@ -1,12 +1,14 @@
 // Embedded Family Tree Data to avoid CORS issues when run via file:// protocol
 const familyData = {
   "id": "root_ancestor",
-  "name": "Nguyễn Văn Hộ (Hiệu Phúc Cảnh) & Lê Hiệu Diệu Long",
+  "name": "Nguyễn Công Tự & Lê Hiệu Diệu Long",
   "generation": 1,
+  "bloodline": "husband",
+  "source": "1:1.01",
   "husband": {
-    "name": "Nguyễn Văn Hộ",
+    "name": "Nguyễn Công Tự",
     "title": "Cụ Ông",
-    "alias": "Hiệu Phúc Cảnh",
+    "alias": "Hiệu Phúc Ngôn",
     "anniversary": "16-12"
   },
   "wife": {
@@ -14,136 +16,929 @@ const familyData = {
     "title": "Cụ Bà",
     "anniversary": "28-6"
   },
-  "notes": "Cụ Tổ Chi (Trưởng Chi - Nguyễn Văn Hồ)",
+  "notes": "Cụ Tổ Chi (Trưởng chi: Nguyễn Văn Hỗ)",
   "children": [
     {
       "id": "gen2_nguyen_van_luong",
-      "name": "Nguyễn Văn Lương & Phạm Thị Quận",
+      "name": "Nguyễn Văn Lượng & Lê Thị Tân",
       "generation": 2,
+      "bloodline": "husband",
+      "source": "1:2.01",
       "husband": {
-        "name": "Nguyễn Văn Lương",
+        "name": "Nguyễn Văn Lượng",
         "title": "Cụ Ông",
         "anniversary": "1-6"
       },
       "wife": {
-        "name": "Phạm Thị Quận",
+        "name": "Lê Thị Tân",
         "title": "Cụ Bà",
-        "alias": "Hiệu Thực Lương",
         "anniversary": "24-7"
       },
       "children": [
         {
           "id": "gen3_nguyen_thi_luong",
-          "name": "Nguyễn Thị Lượng & Nguyễn V Xuất",
+          "name": "Nguyễn Văn Xuất & Nguyễn Thị Lượng",
           "generation": 3,
+          "bloodline": "wife",
+          "source": "1:3.01",
+          "husband": {
+            "name": "Nguyễn Văn Xuất",
+            "title": "Cụ Ông"
+          },
           "wife": {
             "name": "Nguyễn Thị Lượng",
             "title": "Cụ Bà"
           },
-          "husband": {
-            "name": "Nguyễn V Xuất"
-          },
-          "notes": "Lấy chồng Nguyễn V Xuất"
-        },
-        {
-          "id": "gen3_nguyen_van_hao",
-          "name": "Nguyễn Văn Hảo & Vợ",
-          "generation": 3,
-          "husband": {
-            "name": "Nguyễn Văn Hảo",
-            "title": "Cụ Ông",
-            "anniversary": "28-12"
-          },
-          "wife": {
-            "name": "Cụ Bà"
-          },
           "children": [
             {
               "id": "gen4_trum_cach",
-              "name": "Ông Trùm Cách (Trực Điển)",
+              "name": "Trùm Cách",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.01",
               "husband": {
-                "name": "Ông Trùm Cách",
-                "alias": "Trực Điển",
-                "notes": "Mất lúc 20 tuổi"
-              },
-              "wife": {
-                "name": "Nguyễn Thị Lấy / Phùng Thị Đồng",
-                "notes": "Vợ cả: Nguyễn Thị Liên (Giỗ: 4-10). Vợ hai: Phùng Thị Đồng (Giỗ: 1-12)"
+                "name": "Trùm Cách",
+                "title": "Ông"
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_loi",
-                  "name": "Bà Nguyễn V Nhật & Chồng",
+                  "id": "gen5_nguyen_van_nhit",
+                  "name": "Nguyễn Văn Nhít",
                   "generation": 5,
-                  "wife": {
-                    "name": "Nguyễn V Nhật (Thịnh)"
-                  },
+                  "bloodline": "husband",
+                  "source": "1:5.01",
                   "husband": {
-                    "name": "Ông Thọ"
-                  },
-                  "children": [
-                    { "id": "gen6_tho", "name": "Ô. Thọ", "generation": 6, "husband": { "name": "Ô. Thọ" } },
-                    { "id": "gen6_tit", "name": "Ô. Tít", "generation": 6, "husband": { "name": "Ô. Tít" } },
-                    { "id": "gen6_phanh", "name": "Ô. Phanh", "generation": 6, "husband": { "name": "Ô. Phanh" } },
-                    { "id": "gen6_dinh", "name": "Ô. Đỉnh (trên Sơn Tây)", "generation": 6, "husband": { "name": "Ô. Đỉnh", "notes": "trên Sơn Tây" } },
-                    { "id": "gen6_lai", "name": "Ô. Lài", "generation": 6, "husband": { "name": "Ô. Lài" } },
-                    { "id": "gen6_che", "name": "Ô. Chế", "generation": 6, "husband": { "name": "Ô. Chế" } },
-                    { "id": "gen6_tich", "name": "B. Tích", "generation": 6, "wife": { "name": "B. Tích" } },
-                    { "id": "gen6_yen", "name": "B. Yến", "generation": 6, "wife": { "name": "B. Yến" } }
-                  ]
-                },
+                    "name": "Nguyễn Văn Nhít",
+                    "title": "Ông",
+                    "alias": "Thìn"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_sat",
+              "name": "Sắt",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.02",
+              "husband": {
+                "name": "Sắt",
+                "title": "Ông"
+              },
+              "children": [
                 {
-                  "id": "gen5_nguyen_van_xuan",
-                  "name": "Nguyễn Văn Hộ & Hà Thuân",
+                  "id": "gen5_xuoc",
+                  "name": "Xược",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.02",
                   "husband": {
-                    "name": "Nguyễn Văn Hộ"
-                  },
-                  "wife": {
-                    "name": "Hà Thuân"
+                    "name": "Xược",
+                    "title": "Ông"
                   }
                 },
+                {
+                  "id": "gen5_lieu",
+                  "name": "Liệu",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.02",
+                  "husband": {
+                    "name": "Liệu",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_ban",
+                  "name": "Bàn",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.02",
+                  "wife": {
+                    "name": "Bàn",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_huy",
+                  "name": "Huy",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.02",
+                  "wife": {
+                    "name": "Huy",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_gia",
+              "name": "Giã",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.03",
+              "husband": {
+                "name": "Giã",
+                "title": "Ông"
+              },
+              "children": [
+                {
+                  "id": "gen5_tho",
+                  "name": "Thọ",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.03",
+                  "husband": {
+                    "name": "Thọ",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_tit",
+                  "name": "Tít",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.03",
+                  "husband": {
+                    "name": "Tít",
+                    "title": "Ông"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_tuong",
+              "name": "Tương",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.04",
+              "husband": {
+                "name": "Tương",
+                "title": "Ông"
+              },
+              "children": [
+                {
+                  "id": "gen5_tuy",
+                  "name": "Tùy",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.04",
+                  "husband": {
+                    "name": "Tùy",
+                    "title": "Ông"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_ly_liem",
+              "name": "Lý Liêm",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.05",
+              "wife": {
+                "name": "Lý Liêm",
+                "title": "Bà"
+              },
+              "children": [
+                {
+                  "id": "gen5_phung_dinh_tien",
+                  "name": "Phùng Đình Tiến",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.05",
+                  "husband": {
+                    "name": "Phùng Đình Tiến",
+                    "title": "Ông",
+                    "alias": "Soạn Thể"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_uan",
+              "name": "Uẩn",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.06",
+              "husband": {
+                "name": "Uẩn",
+                "title": "Ông"
+              },
+              "children": [
+                {
+                  "id": "gen5_tuy_5_06",
+                  "name": "Túy",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.06",
+                  "husband": {
+                    "name": "Túy",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_y",
+                  "name": "Ý",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.06",
+                  "husband": {
+                    "name": "Ý",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_hoa",
+                  "name": "Hòa",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.06",
+                  "husband": {
+                    "name": "Hòa",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_thuan_5_06",
+                  "name": "Thuận",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.06",
+                  "husband": {
+                    "name": "Thuận",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_trong",
+                  "name": "Trọng",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.06",
+                  "husband": {
+                    "name": "Trọng",
+                    "title": "Ông"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_man",
+              "name": "Măn",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.07",
+              "husband": {
+                "name": "Măn",
+                "title": "Ông"
+              },
+              "children": [
+                {
+                  "id": "gen5_lai",
+                  "name": "Lai",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.07",
+                  "husband": {
+                    "name": "Lai",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_che",
+                  "name": "Chế",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.07",
+                  "wife": {
+                    "name": "Chế",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_tich",
+                  "name": "Tịch",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.07",
+                  "wife": {
+                    "name": "Tịch",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_yen",
+                  "name": "Yên",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.07",
+                  "wife": {
+                    "name": "Yên",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_hao",
+          "name": "Nguyễn Văn Hào & Cụ Bà",
+          "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.02",
+          "husband": {
+            "name": "Nguyễn Văn Hào",
+            "title": "Cụ Ông",
+            "anniversary": "23-8"
+          },
+          "wife": {
+            "name": "Cụ Bà",
+            "title": "Cụ Bà",
+            "anniversary": "28-12"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_luy",
+              "name": "Nguyễn Văn Lũy",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.08",
+              "husband": {
+                "name": "Nguyễn Văn Lũy",
+                "title": "Ông",
+                "alias": "Trực Điền",
+                "notes": "Mất lúc 12 tuổi"
+              }
+            },
+            {
+              "id": "gen4_nguyen_van_tuong",
+              "name": "Nguyễn Văn Tường & Nguyễn Thị Liễn / Nguyễn Thị Hùy",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.09",
+              "husband": {
+                "name": "Nguyễn Văn Tường",
+                "title": "Ông",
+                "anniversary": "17-5"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Liễn / Nguyễn Thị Hùy",
+                "title": "Bà",
+                "notes": "Bà cả: Nguyễn Thị Liễn, giỗ 4-10. Bà hai: Nguyễn Thị Hùy."
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_ho",
+                  "name": "Nguyễn Văn Hỗ & Nguyễn Thị Huấn",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.08",
+                  "husband": {
+                    "name": "Nguyễn Văn Hỗ",
+                    "title": "Ông"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Huấn",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_xuan",
+              "name": "Nguyễn Văn Xuân",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.10",
+              "husband": {
+                "name": "Nguyễn Văn Xuân",
+                "title": "Ông",
+                "anniversary": "2-7"
+              }
+            },
+            {
+              "id": "gen4_phung_viet_lang",
+              "name": "Phùng Viết Láng & Nguyễn Thị Tình",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.11",
+              "husband": {
+                "name": "Phùng Viết Láng",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Tình",
+                "title": "Bà"
+              },
+              "children": [
                 {
                   "id": "gen5_phung_viet_vung",
-                  "name": "Phùng Việt Vũng & Hoa",
+                  "name": "Phùng Viết Vững & Hoa",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.09",
                   "husband": {
-                    "name": "Phùng Việt Vũng"
+                    "name": "Phùng Viết Vững",
+                    "title": "Ông"
                   },
                   "wife": {
-                    "name": "Hoa"
+                    "name": "Hoa",
+                    "title": "Bà"
                   }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_cu",
+              "name": "Nguyễn Thị Cư",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.12",
+              "wife": {
+                "name": "Nguyễn Thị Cư",
+                "title": "Bà",
+                "alias": "Sư Ấu",
+                "anniversary": "9-5"
+              }
+            },
+            {
+              "id": "gen4_nguyen_thi_tinh_con",
+              "name": "Nguyễn Thị Tình Con",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.13",
+              "wife": {
+                "name": "Nguyễn Thị Tình Con",
+                "title": "Bà",
+                "anniversary": "14-1",
+                "notes": "Mất trẻ"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_cuong",
+          "name": "Nguyễn Văn Cường & Nguyễn Thị Bủng",
+          "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.03",
+          "husband": {
+            "name": "Nguyễn Văn Cường",
+            "title": "Cụ Ông",
+            "alias": "Hiệu Phúc Khang",
+            "anniversary": "8-7"
+          },
+          "wife": {
+            "name": "Nguyễn Thị Bủng",
+            "title": "Cụ Bà",
+            "alias": "Hiệu Diệu Kiện",
+            "anniversary": "23-4"
+          },
+          "children": [
+            {
+              "id": "gen4_ba_sat",
+              "name": "Sắt Nguyễn Duy & Sắt",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.14",
+              "husband": {
+                "name": "Sắt Nguyễn Duy",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Sắt",
+                "title": "Bà"
+              },
+              "notes": "Đẻ tốp: ông Xược, ông Liệu, bà Bàn, bà Huy.",
+              "children": [
+                {
+                  "id": "gen5_ba_sat_xuoc",
+                  "name": "Xược",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:4.14",
+                  "husband": {
+                    "name": "Xược",
+                    "title": "Ông"
+                  },
+                  "notes": "Con bà Sắt và ông Sắt Nguyễn Duy; được ghi trong ô đời 4, không có ô riêng ở đời 5."
                 },
                 {
-                  "id": "gen5_nguyen_thi_ti",
-                  "name": "Nhánh Bà Nguyễn Thị Tị (Sửu)",
+                  "id": "gen5_ba_sat_lieu",
+                  "name": "Liệu",
                   "generation": 5,
-                  "wife": {
-                    "name": "Nguyễn Thị Tị (Sửu)"
+                  "bloodline": "husband",
+                  "source": "1:4.14",
+                  "husband": {
+                    "name": "Liệu",
+                    "title": "Ông"
                   },
-                  "children": [
-                    { "id": "gen6_tu", "name": "B. Tụ", "generation": 6, "wife": { "name": "B. Tụ", "notes": "Bà cả" } },
-                    { "id": "gen6_dung", "name": "B. Dựng", "generation": 6, "wife": { "name": "B. Dựng" } },
-                    { "id": "gen6_canh", "name": "B. Canh", "generation": 6, "wife": { "name": "B. Canh" } },
-                    { "id": "gen6_teo", "name": "Ô. Tèo (chết trẻ)", "generation": 6, "husband": { "name": "Ô. Tèo", "notes": "chết trẻ" } },
-                    { "id": "gen6_dien", "name": "Ô. Điện (chết trẻ)", "generation": 6, "husband": { "name": "Ô. Điện", "notes": "chết trẻ" } },
-                    { "id": "gen6_cuc", "name": "B. Cúc (Tích)", "generation": 6, "wife": { "name": "B. Cúc", "alias": "Tích" } },
-                    { "id": "gen6_tam", "name": "B. Tám", "generation": 6, "wife": { "name": "B. Tám" } },
-                    { "id": "gen6_mon", "name": "B. Mọn (Ngả)", "generation": 6, "wife": { "name": "B. Mọn", "alias": "Ngả" } },
-                    { "id": "gen6_that", "name": "B. Thật (vợ Ô. Sinh)", "generation": 6, "wife": { "name": "B. Thật", "notes": "vợ Ô. Sinh" } },
-                    { "id": "gen6_phuong", "name": "B. Phương", "generation": 6, "wife": { "name": "B. Phương" } },
-                    { "id": "gen6_thu", "name": "B. Thu", "generation": 6, "wife": { "name": "B. Thu" } },
-                    { "id": "gen6_nga", "name": "B. Nga", "generation": 6, "wife": { "name": "B. Nga" } }
-                  ]
+                  "notes": "Con bà Sắt và ông Sắt Nguyễn Duy; được ghi trong ô đời 4, không có ô riêng ở đời 5."
                 },
+                {
+                  "id": "gen5_ba_sat_ban",
+                  "name": "Bàn",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:4.14",
+                  "wife": {
+                    "name": "Bàn",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà Sắt và ông Sắt Nguyễn Duy; được ghi trong ô đời 4, không có ô riêng ở đời 5."
+                },
+                {
+                  "id": "gen5_ba_sat_huy",
+                  "name": "Huy",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:4.14",
+                  "wife": {
+                    "name": "Huy",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà Sắt và ông Sắt Nguyễn Duy; được ghi trong ô đời 4, không có ô riêng ở đời 5."
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_trang",
+              "name": "Nguyễn Văn Tráng & Nguyễn Thị Dọn / Phùng Thị Đặc",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.15",
+              "husband": {
+                "name": "Nguyễn Văn Tráng",
+                "title": "Ông",
+                "anniversary": "14-5"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Dọn / Phùng Thị Đặc",
+                "title": "Bà",
+                "notes": "Bà cả: Nguyễn Thị Dọn, giỗ 30-10. Bà hai: Phùng Thị Đặc, giỗ 30-12."
+              },
+              "children": [
+                {
+                  "id": "gen5_tu",
+                  "name": "Tu",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Tu",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_gong",
+                  "name": "Gòng",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Gòng",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_canh",
+                  "name": "Canh",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Canh",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_tu_xuyen",
+                  "name": "Tư Xuyên",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Tư Xuyên",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_nam",
+                  "name": "Năm",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Năm",
+                    "title": "Bà",
+                    "alias": "Don"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_luc",
+                  "name": "Lục",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Lục",
+                    "title": "Bà",
+                    "alias": "Tích"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_bay",
+                  "name": "Bảy",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Bảy",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_tam",
+                  "name": "Tám",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Tám",
+                    "title": "Bà",
+                    "alias": "Ngà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_chin",
+                  "name": "Chín",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.10",
+                  "husband": {
+                    "name": "Chín",
+                    "title": "Ông"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_thau_dung",
+                  "name": "Tháu Dung",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Tháu Dung",
+                    "title": "Bà"
+                  },
+                  "notes": "Con riêng bà hai; PDF ghi trong nhóm con bà hai của Nguyễn Văn Tráng."
+                },
+                {
+                  "id": "gen5_muoi",
+                  "name": "Mười",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Mười",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_mon",
+                  "name": "Mon",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.10",
+                  "wife": {
+                    "name": "Mon",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_nghiem",
+                  "name": "Nghiêm",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.10",
+                  "husband": {
+                    "name": "Nghiêm",
+                    "title": "Ông"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_dao",
+                  "name": "Đào",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.10",
+                  "husband": {
+                    "name": "Đào",
+                    "title": "Ông"
+                  },
+                  "notes": "Con bà hai."
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_lich",
+              "name": "Nguyễn Văn Lịch & Phùng Thị Xoa",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.16",
+              "husband": {
+                "name": "Nguyễn Văn Lịch",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Ngôn",
+                "anniversary": "9-8"
+              },
+              "wife": {
+                "name": "Phùng Thị Xoa",
+                "title": "Bà",
+                "alias": "Hiệu Diệu Tình",
+                "anniversary": "23-7"
+              },
+              "children": [
+                {
+                  "id": "gen5_nguyen_van_sinh",
+                  "name": "Nguyễn Văn Sinh & Nguyễn Thị Thiệp",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.11",
+                  "husband": {
+                    "name": "Nguyễn Văn Sinh",
+                    "title": "Ông"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Thiệp",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_su",
+              "name": "Nguyễn Văn Sự & Lê Thị Nhũn / Nguyễn Thị Út",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.17",
+              "husband": {
+                "name": "Nguyễn Văn Sự",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Đạo",
+                "anniversary": "28-6"
+              },
+              "wife": {
+                "name": "Lê Thị Nhũn / Nguyễn Thị Út",
+                "title": "Bà",
+                "notes": "Bà cả: Lê Thị Nhũn, hiệu Diệu Tính, giỗ 26-12. Bà hai: Nguyễn Thị Út."
+              },
+              "children": [
+                {
+                  "id": "gen5_van",
+                  "name": "Vạn",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.12",
+                  "wife": {
+                    "name": "Vạn",
+                    "title": "Bà",
+                    "alias": "Nghiệp"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_the_lon",
+                  "name": "Thế Lớn",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.12",
+                  "wife": {
+                    "name": "Thế Lớn",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_the_con",
+                  "name": "Thế Con",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.12",
+                  "wife": {
+                    "name": "Thế Con",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_the",
+                  "name": "Thể",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.12",
+                  "husband": {
+                    "name": "Thể",
+                    "title": "Ông",
+                    "notes": "Mất lúc 15 tuổi"
+                  },
+                  "notes": "Con bà cả."
+                },
+                {
+                  "id": "gen5_mo",
+                  "name": "Mô",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.12",
+                  "husband": {
+                    "name": "Mô",
+                    "title": "Ông",
+                    "notes": "Mất lúc 16 tuổi"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_cuc",
+                  "name": "Cúc",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.12",
+                  "wife": {
+                    "name": "Cúc",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_hoa_5_12",
+                  "name": "Hoa",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.12",
+                  "wife": {
+                    "name": "Hoa",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà hai."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gen3_nguyen_van_vat",
+          "name": "Nguyễn Văn Vật & Hoàng Thị Cần",
+          "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.04",
+          "husband": {
+            "name": "Nguyễn Văn Vật",
+            "title": "Cụ Ông",
+            "alias": "Hiệu Trực Thành",
+            "anniversary": "23-8"
+          },
+          "wife": {
+            "name": "Hoàng Thị Cần",
+            "title": "Cụ Bà",
+            "anniversary": "28-12"
+          },
+          "children": [
+            {
+              "id": "gen4_nguyen_van_trung",
+              "name": "Nguyễn Văn Thưởng",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.18",
+              "husband": {
+                "name": "Nguyễn Văn Thưởng",
+                "title": "Ông",
+                "alias": "Hiệu Trực Trân",
+                "anniversary": "28-12"
+              },
+              "children": [
                 {
                   "id": "gen5_nguyen_van_nghe",
-                  "name": "Nguyễn Văn Nghệ (Lập)",
+                  "name": "Nguyễn Văn Lập",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.13",
                   "husband": {
-                    "name": "Nguyễn Văn Nghệ",
-                    "alias": "Lập",
+                    "name": "Nguyễn Văn Lập",
+                    "title": "Ông",
                     "anniversary": "8-2"
                   }
                 },
@@ -151,587 +946,734 @@ const familyData = {
                   "id": "gen5_nguyen_van_nghiep",
                   "name": "Nguyễn Văn Nghiệp",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.13",
                   "husband": {
                     "name": "Nguyễn Văn Nghiệp",
+                    "title": "Ông",
                     "anniversary": "14-3"
                   }
                 }
               ]
-            },
-            {
-              "id": "gen4_trum_nghi",
-              "name": "Ông Trùm Nghị & Bà Cản",
-              "generation": 4,
-              "husband": {
-                "name": "Ông Trùm Nghị"
-              },
-              "wife": {
-                "name": "Bà Cản",
-                "anniversary": "24-1"
-              },
-              "children": [
-                {
-                  "id": "gen5_nguyen_van_ho",
-                  "name": "Nguyễn Văn Hồ & Nguyễn Thị Huân",
-                  "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Hồ"
-                  },
-                  "wife": {
-                    "name": "Nguyễn Thị Huân"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "gen4_tuong",
-              "name": "Ông Tưởng",
-              "generation": 4,
-              "husband": {
-                "name": "Ông Tưởng"
-              }
-            },
-            {
-              "id": "gen4_du",
-              "name": "Bà Đủ (Bà Lộc)",
-              "generation": 4,
-              "wife": {
-                "name": "Bà Đủ",
-                "alias": "Bà Lộc"
-              }
-            },
-            {
-              "id": "gen4_lum",
-              "name": "Ông Lựm",
-              "generation": 4,
-              "husband": {
-                "name": "Ông Lựm"
-              }
-            },
-            {
-              "id": "gen4_man",
-              "name": "Ông Mân",
-              "generation": 4,
-              "husband": {
-                "name": "Ông Mân"
-              }
             }
           ]
         },
         {
-          "id": "gen3_nguyen_van_cuong",
-          "name": "Nguyễn V Cường & Đỗ Thị Bủn",
+          "id": "gen3_nguyen_van_luc",
+          "name": "Nguyễn Văn Lực & Nguyễn Thị Cống",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.05",
           "husband": {
-            "name": "Nguyễn V Cường",
-            "title": "Cụ Ông"
+            "name": "Nguyễn Văn Lực",
+            "title": "Cụ Ông",
+            "alias": "Hiệu Phúc Tài",
+            "anniversary": "12-2"
           },
           "wife": {
-            "name": "Đỗ Thị Bủn",
+            "name": "Nguyễn Thị Cống",
             "title": "Cụ Bà",
-            "alias": "Hiệu Diệu Kiên",
-            "anniversary": "23-4"
+            "alias": "Hiệu Diệu Sức",
+            "anniversary": "20-5"
           },
           "children": [
             {
-              "id": "gen4_nguyen_van_trang",
-              "name": "Nguyễn Văn Tráng & Nguyễn Thị Lý",
+              "id": "gen4_nguyen_thi_tin_lon",
+              "name": "Kép Hoàn & Nguyễn Thị Tĩn Lớn",
               "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.19",
               "husband": {
-                "name": "Nguyễn Văn Tráng",
-                "anniversary": "14-2"
+                "name": "Kép Hoàn",
+                "title": "Ông",
+                "notes": "Họ Phùng Minh"
               },
               "wife": {
-                "name": "Nguyễn Thị Lý"
+                "name": "Nguyễn Thị Tĩn Lớn",
+                "title": "Bà"
+              }
+            },
+            {
+              "id": "gen4_nguyen_thi_tin",
+              "name": "Nguyễn Đình Kiên & Nguyễn Thị Tĩn Con",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.20",
+              "husband": {
+                "name": "Nguyễn Đình Kiên",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Tĩn Con",
+                "title": "Bà",
+                "notes": "Vợ bé"
+              }
+            },
+            {
+              "id": "gen4_nguyen_van_kinh_4_21",
+              "name": "Nguyễn Văn Kỉnh & Nguyễn Thị Luyện",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.21",
+              "husband": {
+                "name": "Nguyễn Văn Kỉnh",
+                "title": "Ông",
+                "alias": "Thuần Vãng",
+                "anniversary": "17-3"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Luyện",
+                "title": "Bà"
               },
               "children": [
                 {
                   "id": "gen5_nguyen_van_thinh",
                   "name": "Nguyễn Văn Thịnh",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.14",
                   "husband": {
-                    "name": "Nguyễn Văn Thịnh"
+                    "name": "Nguyễn Văn Thịnh",
+                    "title": "Ông"
                   }
                 }
               ]
             },
             {
-              "id": "gen4_nguyen_van_phung",
-              "name": "Nguyễn Văn Phúng & Các Vợ",
+              "id": "gen4_luu_van_chiu",
+              "name": "Lưu Văn Chiu & Nguyễn Thị Nhít",
               "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.22",
               "husband": {
-                "name": "Nguyễn Văn Phúng",
-                "anniversary": "30-12"
+                "name": "Lưu Văn Chiu",
+                "title": "Ông"
               },
               "wife": {
-                "name": "Cụ Bà 1 / Cụ Bà 2",
-                "notes": "Cụ Bà 1 (Giỗ: 20-1). Cụ Bà 2 (Giỗ: 8-8)"
-              },
-              "children": [
-                { "id": "gen5_gai", "name": "Bà Gái", "generation": 5, "wife": { "name": "Bà Gái", "notes": "Giỗ 16-10 tuổi" } },
-                { "id": "gen5_lam_san", "name": "B. Làm Sân", "generation": 5, "wife": { "name": "B. Làm Sân" } },
-                { "id": "gen5_sanh_con", "name": "Sành Con", "generation": 5 },
-                { "id": "gen5_thuy", "name": "Ô. Thủy", "generation": 5, "husband": { "name": "Ô. Thủy" } },
-                { "id": "gen5_thuan", "name": "Ô. Thuận", "generation": 5, "husband": { "name": "Ô. Thuận" } },
-                { "id": "gen5_du", "name": "B. Đủ", "generation": 5, "wife": { "name": "B. Đủ" } },
-                { "id": "gen5_kha", "name": "B. Kha", "generation": 5, "wife": { "name": "B. Kha" } }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_van_lich",
-              "name": "Nguyễn Văn Lịch & Trần Thị Liên",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Lịch",
-                "alias": "Phúc Hòa"
-              },
-              "wife": {
-                "name": "Trần Thị Liên",
-                "anniversary": "26-12"
-              },
-              "children": [
-                { "id": "gen5_ta", "name": "B. Tả", "generation": 5, "wife": { "name": "B. Tả" } },
-                { "id": "gen5_ta_2", "name": "B. Tạ", "generation": 5, "wife": { "name": "B. Tạ" } },
-                { "id": "gen5_chan", "name": "Ô. Chấn", "generation": 5, "husband": { "name": "Ô. Chấn" } }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_van_su",
-              "name": "Nguyễn Văn Sự & Phùng Thị Lý",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Sự",
-                "alias": "Phúc Đăng",
-                "anniversary": "29-6"
-              },
-              "wife": {
-                "name": "Phùng Thị Lý",
-                "alias": "Diệu Tình",
-                "anniversary": "25-12"
-              }
-            },
-            {
-              "id": "gen4_nguyen_thi_thu",
-              "name": "Nguyễn Thị Thứ",
-              "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Thứ",
-                "alias": "Trực Khang",
-                "anniversary": "25-12"
-              }
-            }
-          ]
-        },
-        {
-          "id": "gen3_nguyen_van_vat",
-          "name": "Nguyễn V Vật & Hoàng Thị Cận",
-          "generation": 3,
-          "husband": {
-            "name": "Nguyễn V Vật",
-            "title": "Cụ Ông",
-            "anniversary": "28-12"
-          },
-          "wife": {
-            "name": "Hoàng Thị Cận",
-            "title": "Cụ Bà"
-          },
-          "children": [
-            {
-              "id": "gen4_nguyen_van_trung",
-              "name": "Nguyễn Văn Trung",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Trung",
-                "alias": "Trực Hoàn",
-                "anniversary": "28-12"
-              }
-            }
-          ]
-        },
-        {
-          "id": "gen3_nguyen_van_luc",
-          "name": "Nguyễn Văn Lực & Nguyễn Thị Công",
-          "generation": 3,
-          "husband": {
-            "name": "Nguyễn Văn Lực",
-            "title": "Cụ Ông",
-            "alias": "Phúc Tài",
-            "anniversary": "12-2"
-          },
-          "wife": {
-            "name": "Nguyễn Thị Công",
-            "title": "Cụ Bà",
-            "alias": "Trực Ngân",
-            "anniversary": "4-5"
-          },
-          "children": [
-            {
-              "id": "gen4_nguyen_van_bac",
-              "name": "Nguyễn Văn Bắc & Ngô Thị Ngọc",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Bắc",
-                "alias": "Trực Kính"
-              },
-              "wife": {
-                "name": "Ngô Thị Ngọc",
-                "notes": "Quê quán: Phú Hòa Minh"
+                "name": "Nguyễn Thị Nhít",
+                "title": "Bà",
+                "notes": "Vợ cả"
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_huy",
-                  "name": "Nguyễn Văn Huy & Vợ",
+                  "id": "gen5_luu_thi_khang",
+                  "name": "Lưu Thị Khang",
                   "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Huy",
-                    "alias": "Hùng",
-                    "anniversary": "17-3"
-                  },
+                  "bloodline": "wife",
+                  "source": "1:5.15",
                   "wife": {
-                    "name": "Bà Cận"
+                    "name": "Lưu Thị Khang",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_luu_thi_thien",
+                  "name": "Lưu Thị Thiện",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.15",
+                  "wife": {
+                    "name": "Lưu Thị Thiện",
+                    "title": "Bà"
                   }
                 }
               ]
             },
             {
-              "id": "gen4_nguyen_thi_tin",
-              "name": "Nguyễn Thị Tín & Nguyễn Lưu Văn Chu",
+              "id": "gen4_nguyen_van_hoen",
+              "name": "Nguyễn Văn Hoẻn & Phùng Thị Tý / Phùng Thị Bát",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Tín",
-                "alias": "T - Còn"
-              },
+              "bloodline": "husband",
+              "source": "1:4.23",
               "husband": {
-                "name": "Nguyễn Lưu Văn Chu"
+                "name": "Nguyễn Văn Hoẻn",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Tấu",
+                "anniversary": "7-3"
               },
-              "children": [
-                {
-                  "id": "gen5_nguyen_van_hong",
-                  "name": "Nguyễn Văn Hồng & Nguyễn Thị Kính",
-                  "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Hồng",
-                    "alias": "Lưu"
-                  },
-                  "wife": {
-                    "name": "Nguyễn Thị Kính",
-                    "notes": "Quê quán: Trình Thắng / Trị Thắng"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_thi_khanh",
-              "name": "Nguyễn Thị Khanh & Nguyễn Văn Oành",
-              "generation": 4,
               "wife": {
-                "name": "Nguyễn Thị Khanh",
-                "anniversary": "17-3"
-              },
-              "husband": {
-                "name": "Nguyễn Văn Oành",
-                "notes": "Khanh Thuận Vàng"
+                "name": "Phùng Thị Tý / Phùng Thị Bát",
+                "title": "Bà",
+                "notes": "Bà cả: Phùng Thị Tý, hiệu Từ Y, giỗ 26-2. Bà hai: Phùng Thị Bát."
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_chu",
-                  "name": "Nguyễn Văn Chu & Lưu Thị Tín",
+                  "id": "gen5_gai",
+                  "name": "Nguyễn Thị Gái",
                   "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Chu"
-                  },
+                  "bloodline": "wife",
+                  "source": "1:5.16",
                   "wife": {
-                    "name": "Lưu Thị Tín",
-                    "alias": "T - Còn",
-                    "anniversary": "2-7"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_thi_khuyen",
-              "name": "Nguyễn Thị Khuyên",
-              "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Khuyên",
-                "alias": "Phúc Cận",
-                "anniversary": "2-7"
-              },
-              "children": [
+                    "name": "Nguyễn Thị Gái",
+                    "title": "Bà",
+                    "notes": "Mất lúc 16 tuổi"
+                  },
+                  "notes": "Con bà cả."
+                },
                 {
-                  "id": "gen5_khuyen_child",
-                  "name": "Bà Nguyễn Thị Khuyên & Lý Văn Chúc",
+                  "id": "gen5_lam_san",
+                  "name": "Sành Lớn",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.16",
                   "wife": {
-                    "name": "Nguyễn Thị Khuyên",
-                    "alias": "Phúc Cận",
-                    "anniversary": "2-7"
+                    "name": "Sành Lớn",
+                    "title": "Bà"
                   },
-                  "husband": {
-                    "name": "Lý Văn Chúc"
-                  },
-                  "notes": "Mất lúc 12 tuổi"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "gen3_nguyen_van_ty",
-          "name": "Nguyễn Văn Tý & Lê Thị Phúc",
-          "generation": 3,
-          "husband": {
-            "name": "Nguyễn Văn Tý",
-            "title": "Cụ Ông",
-            "alias": "Phúc Tiểu / Téo",
-            "notes": "2-7"
-          },
-          "wife": {
-            "name": "Lê Thị Phúc",
-            "title": "Cụ Bà",
-            "alias": "Hiệu Diệu Ý",
-            "anniversary": "8-8"
-          },
-          "children": [
-            {
-              "id": "gen4_nguyen_van_kinh",
-              "name": "Nguyễn Văn Kính",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Kính",
-                "alias": "Hiệu Thực Thu"
-              },
-              "children": [
+                  "notes": "Con bà hai."
+                },
                 {
-                  "id": "gen5_nguyen_van_hoi",
-                  "name": "Nguyễn Văn Hội & Nguyễn Thị Bìm",
+                  "id": "gen5_sanh_con",
+                  "name": "Sành Con",
                   "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Hội"
-                  },
+                  "bloodline": "wife",
+                  "source": "1:5.16",
                   "wife": {
-                    "name": "Nguyễn Thị Bìm"
-                  }
+                    "name": "Sành Con",
+                    "title": "Bà"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_thuy",
+                  "name": "Thụ",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.16",
+                  "husband": {
+                    "name": "Thụ",
+                    "title": "Ông"
+                  },
+                  "notes": "Con bà hai."
+                },
+                {
+                  "id": "gen5_thuan",
+                  "name": "Thuận",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.16",
+                  "husband": {
+                    "name": "Thuận",
+                    "title": "Ông"
+                  },
+                  "notes": "Con bà hai."
                 }
               ]
             },
             {
               "id": "gen4_nguyen_van_khuyen",
-              "name": "Nguyễn Văn Khuyến",
+              "name": "Nguyễn Văn Khuyến & Lưu Thị Năng",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.24",
               "husband": {
                 "name": "Nguyễn Văn Khuyến",
-                "alias": "Phúc Cận",
-                "anniversary": "2-7",
-                "notes": "Mất lúc 12 tuổi"
+                "title": "Ông",
+                "alias": "Hiệu Phúc Cần",
+                "anniversary": "27-4"
+              },
+              "wife": {
+                "name": "Lưu Thị Năng",
+                "title": "Bà"
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_khuyet",
-                  "name": "Nguyễn Văn Khuyết",
+                  "id": "gen5_tien",
+                  "name": "Tiến",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.17",
                   "husband": {
-                    "name": "Nguyễn Văn Khuyết"
-                  },
-                  "notes": "Tên: Nguyễn Thị Bỉm"
+                    "name": "Tiến",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_lan",
+                  "name": "Lan",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.17",
+                  "wife": {
+                    "name": "Lan",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_hue",
+                  "name": "Huệ",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.17",
+                  "wife": {
+                    "name": "Huệ",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_khanh",
+                  "name": "Khánh",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.17",
+                  "husband": {
+                    "name": "Khánh",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_chuong",
+                  "name": "Chuông",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.17",
+                  "wife": {
+                    "name": "Chuông",
+                    "title": "Bà"
+                  }
                 }
               ]
+            },
+            {
+              "id": "gen4_nguyen_thi_ty_con",
+              "name": "Nguyễn Thị Tý Con",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.25",
+              "wife": {
+                "name": "Nguyễn Thị Tý Con",
+                "title": "Bà",
+                "alias": "Hiệu Thục Thu",
+                "notes": "Mất lúc 12 tuổi"
+              }
             }
           ]
         },
         {
-          "id": "gen3_nguyen_thi_ngo",
-          "name": "Nguyễn Thị Ngọ",
+          "id": "gen3_nguyen_van_thin",
+          "name": "Nguyễn Văn Thìn",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.06",
+          "husband": {
+            "name": "Nguyễn Văn Thìn",
+            "title": "Cụ Ông",
+            "alias": "Trực Ngân",
+            "anniversary": "4-5"
+          }
+        },
+        {
+          "id": "gen3_nguyen_van_ty",
+          "name": "Nguyễn Văn Tý & Lê Thị Phúc",
+          "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.07",
+          "husband": {
+            "name": "Nguyễn Văn Tý",
+            "title": "Cụ Ông",
+            "alias": "Tẻo; Hiệu Phúc Tiêu",
+            "anniversary": "2-7"
+          },
           "wife": {
-            "name": "Nguyễn Thị Ngọ",
-            "title": "Cụ Bà"
+            "name": "Lê Thị Phúc",
+            "title": "Cụ Bà",
+            "alias": "Hiệu Diệu Y",
+            "anniversary": "8-8"
           },
           "children": [
             {
               "id": "gen4_nguyen_thi_bim",
-              "name": "Bà Nguyễn Thị Bỉm & Nguyễn V Vui",
+              "name": "Nguyễn Văn Mùi & Nguyễn Thị Bĩm Con",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Bỉm"
-              },
+              "bloodline": "wife",
+              "source": "1:4.26",
               "husband": {
-                "name": "Nguyễn V Vui"
-              }
-            }
-          ]
-        },
-        {
-          "id": "gen3_nguyen_van_hy",
-          "name": "Nguyễn V Hỷ & Nguyễn Thị Íp",
-          "generation": 3,
-          "husband": {
-            "name": "Nguyễn V Hỷ",
-            "title": "Cụ Ông",
-            "alias": "Phúc Nghĩa",
-            "anniversary": "3-7"
-          },
-          "wife": {
-            "name": "Nguyễn Thị Íp",
-            "title": "Cụ Bà",
-            "alias": "Quảng Lập",
-            "anniversary": "10-12"
-          },
-          "children": [
+                "name": "Nguyễn Văn Mùi",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Bĩm Con",
+                "title": "Bà",
+                "notes": "Vợ cả"
+              },
+              "children": [
+                {
+                  "id": "gen5_ta",
+                  "name": "Trà",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.18",
+                  "wife": {
+                    "name": "Trà",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_ta_2",
+                  "name": "Tá",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.18",
+                  "wife": {
+                    "name": "Tá",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_chan",
+                  "name": "Chân",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.18",
+                  "husband": {
+                    "name": "Chân",
+                    "title": "Ông"
+                  }
+                }
+              ]
+            },
             {
               "id": "gen4_nguyen_van_khuyet_early",
-              "name": "Nguyễn Văn Khuyết (chết trẻ)",
+              "name": "Nguyễn Văn Khuyết",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.27",
               "husband": {
                 "name": "Nguyễn Văn Khuyết",
+                "title": "Ông",
                 "notes": "Chết trẻ"
               }
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "gen2_nguyen_v_ngo",
+      "name": "Nguyễn Văn Ngọ & Cụ Bà",
+      "generation": 2,
+      "bloodline": "husband",
+      "source": "1:2.02",
+      "husband": {
+        "name": "Nguyễn Văn Ngọ",
+        "title": "Cụ Ông",
+        "alias": "Hiệu Phúc Mùi",
+        "anniversary": "23-12"
+      },
+      "wife": {
+        "name": "Cụ Bà",
+        "title": "Cụ Bà",
+        "alias": "Hiệu Diệu Giáp",
+        "anniversary": "4-1"
+      },
+      "notes": "Em trai: Nguyễn Văn Công, hiệu Phúc Thận, giỗ 24-8. PDF ghi chung trong ô của Nguyễn Văn Ngọ.",
+      "children": [
+        {
+          "id": "gen3_nguyen_thi_ngo",
+          "name": "Nguyễn Thị Ngọ",
+          "generation": 3,
+          "bloodline": "wife",
+          "source": "1:3.08",
+          "wife": {
+            "name": "Nguyễn Thị Ngọ",
+            "title": "Cụ Bà"
+          }
         },
         {
-          "id": "gen3_nguyen_van_quan",
-          "name": "Nguyễn Văn Quản & Nguyễn Thị Ban",
+          "id": "gen3_nguyen_van_hy",
+          "name": "Nguyễn Văn Hiếu & Nguyễn Thị Tập",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.09",
           "husband": {
-            "name": "Nguyễn Văn Quản",
-            "title": "Cụ Ông"
+            "name": "Nguyễn Văn Hiếu",
+            "title": "Cụ Ông",
+            "alias": "Hiệu Phúc Nghĩa",
+            "anniversary": "3-7"
           },
           "wife": {
-            "name": "Nguyễn Thị Ban",
+            "name": "Nguyễn Thị Tập",
             "title": "Cụ Bà",
-            "anniversary": "8-10"
+            "alias": "Quang Lập",
+            "anniversary": "13-12"
           },
           "children": [
             {
-              "id": "gen4_quan_nguyen_thi_thanh",
-              "name": "Bà Nguyễn Thị Thành & Đỗ Văn Diệu",
+              "id": "gen4_nguyen_van_tam",
+              "name": "Nguyễn Văn Tâm & Đỗ Thị Lê",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Thành",
-                "anniversary": "19-2"
-              },
+              "bloodline": "husband",
+              "source": "1:4.28",
               "husband": {
-                "name": "Đỗ Văn Diệu",
-                "alias": "Tứu",
+                "name": "Nguyễn Văn Tâm",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Lương",
+                "anniversary": "9-2"
+              },
+              "wife": {
+                "name": "Đỗ Thị Lê",
+                "title": "Bà",
+                "alias": "Hiệu Tưu",
                 "anniversary": "2-1"
               },
               "children": [
                 {
                   "id": "gen5_nguyen_thi_thuan",
-                  "name": "Bà Nguyễn Thị Thuận & Nguyễn Văn Hòa",
+                  "name": "Nguyễn Văn Hòa & Nguyễn Thị Thuận",
                   "generation": 5,
-                  "wife": {
-                    "name": "Nguyễn Thị Thuận",
-                    "anniversary": "9-2"
-                  },
+                  "bloodline": "wife",
+                  "source": "1:5.19",
                   "husband": {
                     "name": "Nguyễn Văn Hòa",
-                    "anniversary": "1-8"
+                    "title": "Ông"
+                  },
+                  "wife": {
+                    "name": "Nguyễn Thị Thuận",
+                    "title": "Bà"
                   }
                 }
               ]
             },
             {
               "id": "gen4_nguyen_thi_tinh",
-              "name": "Bà Nguyễn Thị Tình & Nguyễn Hữu Đường",
+              "name": "Nguyễn Hữu Dương & Nguyễn Thị Tính",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Tình",
-                "anniversary": "21-9"
-              },
+              "bloodline": "wife",
+              "source": "1:4.29",
               "husband": {
-                "name": "Nguyễn Hữu Đường"
+                "name": "Nguyễn Hữu Dương",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Tính",
+                "title": "Bà",
+                "anniversary": "21-9",
+                "notes": "Vợ cả"
               },
               "children": [
                 {
-                  "id": "gen5_quan_nguyen_van_bien",
-                  "name": "Nguyễn Văn Biên & Nguyễn Thị Bé",
+                  "id": "gen5_be",
+                  "name": "Bệ",
                   "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Biên",
-                    "anniversary": "9-2"
-                  },
+                  "bloodline": "wife",
+                  "source": "1:5.20",
                   "wife": {
-                    "name": "Nguyễn Thị Bé",
-                    "anniversary": "27-4"
+                    "name": "Bệ",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_bi",
+                  "name": "Bỉ",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.20",
+                  "wife": {
+                    "name": "Bỉ",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_do",
+                  "name": "Đô",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.20",
+                  "husband": {
+                    "name": "Đô",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_dinh",
+                  "name": "Đỉnh",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.20",
+                  "husband": {
+                    "name": "Đỉnh",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_dong",
+                  "name": "Đồng",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.20",
+                  "husband": {
+                    "name": "Đồng",
+                    "title": "Ông"
                   }
                 }
               ]
             },
             {
-              "id": "gen4_nguyen_thi_lon",
-              "name": "Bà Nguyễn Thị Lớn & Nguyễn Văn Hùng",
+              "id": "gen4_nguyen_van_cam",
+              "name": "Nguyễn Văn Cam & Lưu Thị Lớn",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.30",
+              "husband": {
+                "name": "Nguyễn Văn Cam",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Kết",
+                "anniversary": "22-6"
+              },
               "wife": {
-                "name": "Nguyễn Thị Lớn",
+                "name": "Lưu Thị Lớn",
+                "title": "Bà",
                 "anniversary": "10-8"
               },
-              "husband": {
-                "name": "Nguyễn Văn Hùng"
-              },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_chien",
-                  "name": "Nguyễn Văn Chiến & Lại Thị Thi",
+                  "id": "gen5_nguyen_van_gu",
+                  "name": "Nguyễn Văn Gụ",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.21",
                   "husband": {
-                    "name": "Nguyễn Văn Chiến"
-                  },
-                  "wife": {
-                    "name": "Lại Thị Thi"
+                    "name": "Nguyễn Văn Gụ",
+                    "title": "Ông",
+                    "anniversary": "8-5"
                   }
                 }
               ]
             },
             {
-              "id": "gen4_nguyen_van_phu",
-              "name": "Nguyễn Văn Phú & Nguyễn Thị Xoan",
+              "id": "gen4_nguyen_van_man",
+              "name": "Nguyễn Văn Mận & Lưu Thị Gái",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.31",
               "husband": {
-                "name": "Nguyễn Văn Phú",
-                "alias": "Mận",
+                "name": "Nguyễn Văn Mận",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Hưu",
                 "anniversary": "9-11"
               },
               "wife": {
-                "name": "Nguyễn Thị Xoan"
+                "name": "Lưu Thị Gái",
+                "title": "Bà",
+                "alias": "Hiệu Diệu Quả",
+                "anniversary": "23-5"
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_dong",
-                  "name": "Nguyễn Văn Đông & Nguyễn Thị Thuận",
+                  "id": "gen5_mo_5_22",
+                  "name": "Mơ",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.22",
                   "husband": {
-                    "name": "Nguyễn Văn Đông",
-                    "anniversary": "28-3"
-                  },
+                    "name": "Mơ",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_ty",
+                  "name": "Tý",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.22",
                   "wife": {
-                    "name": "Nguyễn Thị Thuận",
-                    "anniversary": "29-9"
+                    "name": "Tý",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_sang",
+                  "name": "Sáng",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.22",
+                  "husband": {
+                    "name": "Sáng",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_mai",
+                  "name": "Mai",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.22",
+                  "wife": {
+                    "name": "Mai",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_duong",
+                  "name": "Đường",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.22",
+                  "husband": {
+                    "name": "Đường",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_dung",
+                  "name": "Dũng",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.22",
+                  "husband": {
+                    "name": "Dũng",
+                    "title": "Ông"
                   }
                 }
               ]
             },
             {
               "id": "gen4_nguyen_thi_tan",
-              "name": "Bà Nguyễn Thị Tàn & Chồng",
+              "name": "Nguyễn Hữu Dương & Nguyễn Thị Toán",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Tàn"
-              },
+              "bloodline": "wife",
+              "source": "1:4.32",
               "husband": {
-                "name": "Lê Hữu"
+                "name": "Nguyễn Hữu Dương",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Toán",
+                "title": "Bà",
+                "notes": "Vợ lẽ"
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_thi_toan",
-                  "name": "Bà Nguyễn Thị Toàn & Nguyễn Văn Hiền",
+                  "id": "gen5_toan_dang",
+                  "name": "Đang",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.23",
                   "wife": {
-                    "name": "Nguyễn Thị Toàn"
-                  },
-                  "husband": {
-                    "name": "Nguyễn Văn Hiền"
+                    "name": "Đang",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_toan_hoa",
+                  "name": "Hoa",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.23",
+                  "wife": {
+                    "name": "Hoa",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_toan_dang_sac",
+                  "name": "Đáng",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.23",
+                  "wife": {
+                    "name": "Đáng",
+                    "title": "Bà"
                   }
                 }
               ]
@@ -739,106 +1681,322 @@ const familyData = {
           ]
         },
         {
-          "id": "gen3_nguyen_van_hieu",
-          "name": "Nguyễn Văn Hiệu & Đỗ Thị Diệu",
+          "id": "gen3_nguyen_van_quan",
+          "name": "Nguyễn Văn Quận",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.10",
           "husband": {
-            "name": "Nguyễn Văn Hiệu",
-            "title": "Cụ Ông"
+            "name": "Nguyễn Văn Quận",
+            "title": "Cụ Ông",
+            "alias": "Trực Nghi",
+            "anniversary": "8-10"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen2_nguyen_van_tu",
+      "name": "Nguyễn Văn Tự & Phùng Thị Diệu",
+      "generation": 2,
+      "bloodline": "husband",
+      "source": "1:2.03",
+      "husband": {
+        "name": "Nguyễn Văn Tự",
+        "title": "Cụ Ông",
+        "alias": "Hiệu Phúc Cẩn",
+        "anniversary": "6-9"
+      },
+      "wife": {
+        "name": "Phùng Thị Diệu",
+        "title": "Cụ Bà",
+        "alias": "Hiệu Diệu Tín",
+        "anniversary": "9-5"
+      },
+      "children": [
+        {
+          "id": "gen3_nguyen_van_hieu",
+          "name": "Nguyễn Văn Nhịu & Đỗ Thị",
+          "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.11",
+          "husband": {
+            "name": "Nguyễn Văn Nhịu",
+            "title": "Cụ Ông",
+            "alias": "Hiệu Phúc Điển",
+            "anniversary": "20-1"
           },
           "wife": {
-            "name": "Đỗ Thị Diệu",
+            "name": "Đỗ Thị",
             "title": "Cụ Bà",
+            "alias": "Hiệu Diệu Nghĩa",
             "anniversary": "8-10"
           },
           "children": [
             {
-              "id": "gen4_nguyen_thi_hoa",
-              "name": "Bà Nguyễn Thị Hoa & Nguyễn Văn Liên",
+              "id": "gen4_nguyen_van_nhan",
+              "name": "Nguyễn Văn Nhân & Bà Cả / Lưu Thị Tình",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Hoa",
-                "alias": "Phúc Đạo",
+              "bloodline": "husband",
+              "source": "1:4.33",
+              "husband": {
+                "name": "Nguyễn Văn Nhân",
+                "title": "Ông",
+                "alias": "Hiệu Phúc Đạo",
                 "anniversary": "21-1"
               },
-              "husband": {
-                "name": "Nguyễn Văn Liên"
+              "wife": {
+                "name": "Bà Cả / Lưu Thị Tình",
+                "title": "Bà",
+                "notes": "Bà cả: chưa rõ tên, giỗ 12-8. Bà hai: Lưu Thị Tình, giỗ 29-8."
               },
               "children": [
                 {
-                  "id": "gen5_nguyen_van_man",
-                  "name": "Nguyễn Văn Mẫn & Lê Thị Tình",
+                  "id": "gen5_duyen",
+                  "name": "Duyên",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.24",
                   "husband": {
-                    "name": "Nguyễn Văn Mẫn",
-                    "alias": "Phúc Hữu",
-                    "anniversary": "9-11"
-                  },
-                  "wife": {
-                    "name": "Lê Thị Tình",
-                    "anniversary": "29-8"
+                    "name": "Duyên",
+                    "title": "Ông"
                   }
-                }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_thi_ton",
-              "name": "Bà Nguyễn Thị Tọn",
-              "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Tọn"
-              },
-              "children": [
+                },
                 {
-                  "id": "gen5_nguyen_thi_thoai",
-                  "name": "Bà Nguyễn Thị Thoại",
+                  "id": "gen5_le",
+                  "name": "Lệ",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.24",
                   "wife": {
-                    "name": "Nguyễn Thị Thoại"
+                    "name": "Lệ",
+                    "title": "Bà"
                   }
-                }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_thi_to",
-              "name": "Bà Nguyễn Thị Tỏ",
-              "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Tỏ"
-              },
-              "children": [
+                },
                 {
-                  "id": "gen5_nguyen_thi_thai",
-                  "name": "Bà Nguyễn Thị Thái",
+                  "id": "gen5_lan_5_24",
+                  "name": "Lẫn",
                   "generation": 5,
-                  "wife": {
-                    "name": "Nguyễn Thị Thái"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "gen4_nguyen_van_thuy",
-              "name": "Nguyễn Văn Thủy & Nguyễn Thị Túy",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Thủy",
-                "anniversary": "12-8"
-              },
-              "wife": {
-                "name": "Nguyễn Thị Túy",
-                "anniversary": "29-8"
-              },
-              "children": [
-                {
-                  "id": "gen5_nguyen_van_quang",
-                  "name": "Nguyễn Văn Quang & Nguyễn Thị Bổng",
-                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.24",
                   "husband": {
-                    "name": "Nguyễn Văn Quang"
-                  },
+                    "name": "Lẫn",
+                    "title": "Ông",
+                    "alias": "Trực Lợi",
+                    "notes": "Chết trẻ lúc 12 tuổi"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_lon_4_34",
+              "name": "Nguyễn Thị Lớn",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.34",
+              "wife": {
+                "name": "Nguyễn Thị Lớn",
+                "title": "Bà"
+              },
+              "children": [
+                {
+                  "id": "gen5_na",
+                  "name": "Na",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.25",
                   "wife": {
-                    "name": "Nguyễn Thị Bổng"
+                    "name": "Na",
+                    "title": "Bà"
+                  },
+                  "notes": "Làng Mây; đẻ ra cô Dừa."
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_thoai",
+              "name": "Nguyễn Thị Thoai",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.35",
+              "wife": {
+                "name": "Nguyễn Thị Thoai",
+                "title": "Bà"
+              },
+              "children": [
+                {
+                  "id": "gen5_hai",
+                  "name": "Hải",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.26",
+                  "wife": {
+                    "name": "Hải",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_gai_5_26",
+                  "name": "Gái",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.26",
+                  "wife": {
+                    "name": "Gái",
+                    "title": "Bà",
+                    "alias": "Đầu Đê"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_thu_deo",
+              "name": "Thủ Dẻo & Nguyễn Thị Tháu",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.36",
+              "husband": {
+                "name": "Thủ Dẻo",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Tháu",
+                "title": "Bà",
+                "notes": "Vợ hai"
+              },
+              "children": [
+                {
+                  "id": "gen5_thau_ty_con",
+                  "name": "Tý Con",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.27",
+                  "wife": {
+                    "name": "Tý Con",
+                    "title": "Bà",
+                    "alias": "Được"
+                  }
+                },
+                {
+                  "id": "gen5_thau_bay",
+                  "name": "Bẩy",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.27",
+                  "wife": {
+                    "name": "Bẩy",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_thau_tam",
+                  "name": "Tám",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.27",
+                  "wife": {
+                    "name": "Tám",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_van_luan",
+              "name": "Nguyễn Văn Luân & Phùng Thị Thìa",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.37",
+              "husband": {
+                "name": "Nguyễn Văn Luân",
+                "title": "Ông",
+                "anniversary": "29-4"
+              },
+              "wife": {
+                "name": "Phùng Thị Thìa",
+                "title": "Bà"
+              },
+              "children": [
+                {
+                  "id": "gen5_ly_5_28",
+                  "name": "Ly",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.28",
+                  "wife": {
+                    "name": "Ly",
+                    "title": "Bà",
+                    "alias": "Lai"
+                  }
+                },
+                {
+                  "id": "gen5_luan_ly",
+                  "name": "Lý",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.28",
+                  "husband": {
+                    "name": "Lý",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_nu",
+                  "name": "Nụ",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.28",
+                  "wife": {
+                    "name": "Nụ",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_luan_hoa",
+                  "name": "Hòa",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.28",
+                  "wife": {
+                    "name": "Hòa",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_thi_ty",
+              "name": "Nguyễn Thị Tý",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.38",
+              "wife": {
+                "name": "Nguyễn Thị Tý",
+                "title": "Bà",
+                "alias": "Bà Thảo"
+              },
+              "children": [
+                {
+                  "id": "gen5_nhung",
+                  "name": "Nhung",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.29",
+                  "husband": {
+                    "name": "Nhung",
+                    "title": "Ông",
+                    "alias": "Thu"
+                  }
+                },
+                {
+                  "id": "gen5_phuong",
+                  "name": "Phương",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.29",
+                  "wife": {
+                    "name": "Phương",
+                    "title": "Bà"
                   }
                 }
               ]
@@ -849,9 +2007,12 @@ const familyData = {
           "id": "gen3_nguyen_van_khai",
           "name": "Nguyễn Văn Khải & Phùng Thị Bằng",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.12",
           "husband": {
             "name": "Nguyễn Văn Khải",
-            "title": "Cụ Ông"
+            "title": "Cụ Ông",
+            "anniversary": "19-7"
           },
           "wife": {
             "name": "Phùng Thị Bằng",
@@ -860,151 +2021,274 @@ const familyData = {
           },
           "children": [
             {
-              "id": "gen4_nguyen_thi_cuc",
-              "name": "Bà Nguyễn Thị Cúc",
+              "id": "gen4_nguyen_van_tich",
+              "name": "Nguyễn Văn Tịch & Nguyễn Thị Cù",
               "generation": 4,
-              "wife": {
-                "name": "Nguyễn Thị Cúc"
-              }
-            },
-            {
-              "id": "gen4_vo_cong_thu_phu",
-              "name": "Vợ ông Công Thù Phú",
-              "generation": 4,
-              "wife": {
-                "name": "Vợ ông Công Thù Phú"
-              }
-            },
-            {
-              "id": "gen4_nguyen_van_luan",
-              "name": "Nguyễn Văn Luận & Phùng Thị Thảo",
-              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.39",
               "husband": {
-                "name": "Nguyễn Văn Luận",
-                "anniversary": "29-4"
+                "name": "Nguyễn Văn Tịch",
+                "title": "Ông",
+                "anniversary": "23-11"
               },
               "wife": {
-                "name": "Phùng Thị Thảo",
-                "alias": "Bà Thạo",
-                "anniversary": "14-4"
+                "name": "Nguyễn Thị Cù",
+                "title": "Bà"
               },
               "children": [
                 {
-                  "id": "gen5_luan_quang",
-                  "name": "Nguyễn Văn Quang & Nguyễn Thị Bổng",
+                  "id": "gen5_mac",
+                  "name": "Mạc",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.30",
                   "husband": {
-                    "name": "Nguyễn Văn Quang"
-                  },
-                  "wife": {
-                    "name": "Nguyễn Thị Bổng"
-                  },
-                  "notes": "Giỗ: 8-10"
-                },
-                {
-                  "id": "gen5_luan_tuyet",
-                  "name": "Bà Nguyễn Thị Tuyết",
-                  "generation": 5,
-                  "wife": {
-                    "name": "Nguyễn Thị Tuyết"
+                    "name": "Mạc",
+                    "title": "Ông"
                   }
                 },
                 {
-                  "id": "gen5_luan_bien",
-                  "name": "Nguyễn Văn Biên & Nguyễn Thị Thái",
+                  "id": "gen5_khai",
+                  "name": "Khai",
                   "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Biên"
-                  },
+                  "bloodline": "wife",
+                  "source": "1:5.30",
                   "wife": {
-                    "name": "Nguyễn Thị Thái"
+                    "name": "Khai",
+                    "title": "Bà"
                   }
                 },
                 {
-                  "id": "gen5_luan_cuc",
-                  "name": "Bà Nguyễn Thị Cúc (chết trẻ)",
+                  "id": "gen5_mon_5_30",
+                  "name": "Môn",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.30",
+                  "husband": {
+                    "name": "Môn",
+                    "title": "Ông",
+                    "notes": "Mất lúc 19 tuổi"
+                  }
+                },
+                {
+                  "id": "gen5_tu_5_30",
+                  "name": "Tư",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.30",
                   "wife": {
-                    "name": "Nguyễn Thị Cúc",
-                    "notes": "Chết trẻ"
+                    "name": "Tư",
+                    "title": "Bà"
                   }
                 },
                 {
-                  "id": "gen5_luan_hai",
-                  "name": "Nguyễn Văn Hải (Hùng)",
+                  "id": "gen5_nam_5_30",
+                  "name": "Năm",
                   "generation": 5,
-                  "husband": {
-                    "name": "Nguyễn Văn Hải",
-                    "alias": "Hùng"
+                  "bloodline": "wife",
+                  "source": "1:5.30",
+                  "wife": {
+                    "name": "Năm",
+                    "title": "Bà"
                   }
                 },
                 {
-                  "id": "gen5_luan_tho",
-                  "name": "Nguyễn Văn Thọ",
+                  "id": "gen5_sau",
+                  "name": "Sáu",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.30",
+                  "wife": {
+                    "name": "Sáu",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_bay_5_30",
+                  "name": "Bẩy",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.30",
                   "husband": {
-                    "name": "Nguyễn Văn Thọ"
+                    "name": "Bẩy",
+                    "title": "Ông"
                   }
                 }
               ]
             },
             {
-              "id": "gen4_nguyen_thi_ty",
-              "name": "Bà Nguyễn Thị Tý (Bà Thạo)",
+              "id": "gen4_nguyen_thi_hoa_4_40",
+              "name": "Nguyễn Thị Hoa",
               "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.40",
               "wife": {
-                "name": "Nguyễn Thị Tý",
-                "alias": "Bà Thạo"
-              }
-            },
-            {
-              "id": "gen4_nguyen_van_dien_early",
-              "name": "Nguyễn Văn Điền (chết trẻ)",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Văn Điền",
+                "name": "Nguyễn Thị Hoa",
+                "title": "Bà",
                 "notes": "Chết trẻ"
               }
             },
             {
               "id": "gen4_nguyen_van_bien",
-              "name": "Nguyễn Văn Biên & Nguyễn Thị Thái",
+              "name": "Nguyễn Văn Điển & Nguyễn Thị Thái",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.41",
               "husband": {
-                "name": "Nguyễn Văn Biên",
+                "name": "Nguyễn Văn Điển",
+                "title": "Ông",
                 "anniversary": "8-3"
               },
               "wife": {
-                "name": "Nguyễn Thị Thái"
+                "name": "Nguyễn Thị Thái",
+                "title": "Bà"
               },
               "children": [
                 {
-                  "id": "gen5_bien_thao",
-                  "name": "Bà Nguyễn Thị Thảo (Hằng) & Chồng",
+                  "id": "gen5_nham",
+                  "name": "Nham",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.31",
                   "wife": {
-                    "name": "Nguyễn Thị Thảo",
-                    "alias": "Hằng"
-                  },
+                    "name": "Nham",
+                    "title": "Bà",
+                    "notes": "Con nuôi"
+                  }
+                },
+                {
+                  "id": "gen5_tich_5_31",
+                  "name": "Tích",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.31",
                   "husband": {
-                    "name": "Họ Hữu (Thanh)"
+                    "name": "Tích",
+                    "title": "Ông"
                   }
                 },
                 {
-                  "id": "gen5_bien_com",
-                  "name": "Bà Nguyễn Thị Com",
+                  "id": "gen5_uoc",
+                  "name": "Ước",
                   "generation": 5,
-                  "wife": {
-                    "name": "Nguyễn Thị Com"
+                  "bloodline": "husband",
+                  "source": "1:5.31",
+                  "husband": {
+                    "name": "Ước",
+                    "title": "Ông"
                   }
                 },
                 {
-                  "id": "gen5_bien_hao",
-                  "name": "Bà Nguyễn Thị Hảo (Thái)",
+                  "id": "gen5_dao_5_31",
+                  "name": "Đào",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.31",
                   "wife": {
-                    "name": "Nguyễn Thị Hảo",
-                    "alias": "Thái"
+                    "name": "Đào",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_lieu_5_31",
+                  "name": "Liễu",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.31",
+                  "wife": {
+                    "name": "Liễu",
+                    "title": "Bà"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_khai_nguyen_thi_nhit",
+              "name": "Nguyễn Hữu Chanh & Nguyễn Thị Nhít",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.42",
+              "husband": {
+                "name": "Nguyễn Hữu Chanh",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Nhít",
+                "title": "Bà",
+                "anniversary": "20-9"
+              },
+              "children": [
+                {
+                  "id": "gen5_hoan",
+                  "name": "Hoan",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.32",
+                  "wife": {
+                    "name": "Hoan",
+                    "title": "Bà",
+                    "alias": "Phong"
+                  }
+                },
+                {
+                  "id": "gen5_nhan",
+                  "name": "Nhàn",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.32",
+                  "husband": {
+                    "name": "Nhàn",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_nha",
+                  "name": "Nhã",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.32",
+                  "husband": {
+                    "name": "Nhã",
+                    "title": "Ông"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen5_bien_com",
+              "name": "Nguyễn Văn Hạng & Nguyễn Thị Còm",
+              "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.43",
+              "husband": {
+                "name": "Nguyễn Văn Hạng",
+                "title": "Ông"
+              },
+              "wife": {
+                "name": "Nguyễn Thị Còm",
+                "title": "Bà"
+              },
+              "children": [
+                {
+                  "id": "gen5_hai_5_33",
+                  "name": "Hải",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.33",
+                  "husband": {
+                    "name": "Hải",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_com_hoa",
+                  "name": "Hòa",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.33",
+                  "husband": {
+                    "name": "Hòa",
+                    "title": "Ông"
                   }
                 }
               ]
@@ -1014,81 +2298,75 @@ const familyData = {
       ]
     },
     {
-      "id": "gen2_nguyen_v_ngo",
-      "name": "Nguyễn V Ngọ & Hiệu Diệu Giáp",
-      "generation": 2,
-      "husband": {
-        "name": "Nguyễn V Ngọ",
-        "title": "Cụ Ông",
-        "alias": "Hiệu Phúc Núi",
-        "anniversary": "23-12"
-      },
-      "wife": {
-        "name": "Cụ Bà",
-        "alias": "Hiệu Diệu Giáp",
-        "anniversary": "4-1"
-      },
-      "notes": "Em trai: Nguyễn Công Hiệp, Phúc Thận, Giỗ: 24-8"
-    },
-    {
-      "id": "gen2_nguyen_van_tu",
-      "name": "Nguyễn Văn Tự & Phùng Thị Điệu",
-      "generation": 2,
-      "husband": {
-        "name": "Nguyễn Văn Tự",
-        "title": "Cụ Ông",
-        "alias": "Hiệu Phúc Cận",
-        "anniversary": "6-9"
-      },
-      "wife": {
-        "name": "Phùng Thị Điệu",
-        "title": "Cụ Bà",
-        "alias": "Hiệu Diệu Tín",
-        "anniversary": "9-5"
-      }
-    },
-    {
       "id": "gen2_ly_thuc",
-      "name": "Cụ Lý Thực",
+      "name": "Cụ Lý Thúc",
       "generation": 2,
+      "bloodline": "husband",
+      "source": "1:2.04",
       "husband": {
-        "name": "Cụ Lý Thực"
+        "name": "Cụ Lý Thúc",
+        "title": "Cụ Ông"
       }
     },
     {
       "id": "gen2_ly_van_gia",
-      "name": "Cụ Bà Lý Văn (Gia) & Chồng họ Nguyễn Khắc",
+      "name": "Chồng họ Nguyễn Khắc & Lý Vân",
       "generation": 2,
-      "wife": {
-        "name": "Cụ Bà Lý Văn",
-        "alias": "Gia"
-      },
+      "bloodline": "wife",
+      "source": "1:2.05",
       "husband": {
-        "name": "Cụ Ông họ Nguyễn Khắc"
+        "name": "Chồng họ Nguyễn Khắc",
+        "title": "Cụ Ông"
       },
+      "wife": {
+        "name": "Lý Vân",
+        "title": "Cụ Bà"
+      },
+      "notes": "Gái; lấy chồng họ Nguyễn Khắc.",
       "children": [
         {
           "id": "gen3_khac_van",
-          "name": "Nguyễn Khắc Văn",
+          "name": "Nguyễn Khắc Vân",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.13",
           "husband": {
-            "name": "Nguyễn Khắc Văn"
+            "name": "Nguyễn Khắc Vân",
+            "title": "Cụ Ông"
           },
           "children": [
             {
-              "id": "gen4_khac_nghi",
-              "name": "Nguyễn Khắc Nghị",
+              "id": "gen4_nguyen_khac_vy",
+              "name": "Nguyễn Khắc Vy",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.44",
               "husband": {
-                "name": "Nguyễn Khắc Nghị"
+                "name": "Nguyễn Khắc Vy",
+                "title": "Ông"
               },
               "children": [
                 {
-                  "id": "gen5_khac_thang",
-                  "name": "Nguyễn Khắc Thắng",
+                  "id": "gen5_chi",
+                  "name": "Chi",
                   "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.34",
+                  "wife": {
+                    "name": "Chi",
+                    "title": "Bà",
+                    "alias": "Hỗ"
+                  }
+                },
+                {
+                  "id": "gen5_ky",
+                  "name": "Kỷ",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.34",
                   "husband": {
-                    "name": "Nguyễn Khắc Thắng"
+                    "name": "Kỷ",
+                    "title": "Ông"
                   }
                 }
               ]
@@ -1099,24 +2377,66 @@ const familyData = {
           "id": "gen3_khac_sang",
           "name": "Nguyễn Khắc Sang",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.14",
           "husband": {
-            "name": "Nguyễn Khắc Sang"
+            "name": "Nguyễn Khắc Sang",
+            "title": "Cụ Ông"
           },
           "children": [
             {
-              "id": "gen4_khac_nghiem",
-              "name": "Nguyễn Khắc Nghiêm",
+              "id": "gen4_nguyen_khac_truong",
+              "name": "Nguyễn Khắc Trượng",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.45",
               "husband": {
-                "name": "Nguyễn Khắc Nghiêm"
+                "name": "Nguyễn Khắc Trượng",
+                "title": "Ông"
               },
               "children": [
                 {
-                  "id": "gen5_khac_nghien",
-                  "name": "Nguyễn Khắc Nghiên",
+                  "id": "gen5_dung_5_35",
+                  "name": "Dụng",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.35",
                   "husband": {
-                    "name": "Nguyễn Khắc Nghiên"
+                    "name": "Dụng",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_ty_5_35",
+                  "name": "Ty",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.35",
+                  "husband": {
+                    "name": "Ty",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_truong",
+                  "name": "Trường",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.35",
+                  "husband": {
+                    "name": "Trường",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_ky_5_35",
+                  "name": "Kỳ",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.35",
+                  "husband": {
+                    "name": "Kỳ",
+                    "title": "Ông"
                   }
                 }
               ]
@@ -1125,26 +2445,81 @@ const familyData = {
         },
         {
           "id": "gen3_khac_nhung",
-          "name": "Nguyễn Khắc Nhũng",
+          "name": "Nguyễn Khắc Những",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.15",
           "husband": {
-            "name": "Nguyễn Khắc Nhũng"
+            "name": "Nguyễn Khắc Những",
+            "title": "Cụ Ông"
           },
           "children": [
             {
-              "id": "gen4_khac_nhuong",
-              "name": "Nguyễn Khắc Nhượng",
+              "id": "gen4_khac_nghiem",
+              "name": "Nguyễn Khắc Nghiên",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.46",
               "husband": {
-                "name": "Nguyễn Khắc Nhượng"
+                "name": "Nguyễn Khắc Nghiên",
+                "title": "Ông"
               },
               "children": [
                 {
-                  "id": "gen5_khac_luyen",
-                  "name": "Nguyễn Khắc Luyện",
+                  "id": "gen5_ly",
+                  "name": "Lý",
                   "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.36",
                   "husband": {
-                    "name": "Nguyễn Khắc Luyện"
+                    "name": "Lý",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_lang",
+                  "name": "Lãng",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.36",
+                  "husband": {
+                    "name": "Lãng",
+                    "title": "Ông"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gen4_nguyen_khac_but",
+              "name": "Nguyễn Khắc Bút",
+              "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.47",
+              "husband": {
+                "name": "Nguyễn Khắc Bút",
+                "title": "Ông"
+              },
+              "children": [
+                {
+                  "id": "gen5_chien",
+                  "name": "Chiến",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.37",
+                  "husband": {
+                    "name": "Chiến",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_chanh",
+                  "name": "Chanh",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.37",
+                  "husband": {
+                    "name": "Chanh",
+                    "title": "Ông"
                   }
                 }
               ]
@@ -1153,104 +2528,258 @@ const familyData = {
         },
         {
           "id": "gen3_kien_ba",
-          "name": "Cụ Kiên Bá (Bà Cả) & Chồng họ Nguyễn Đình",
+          "name": "Kiên Bà",
           "generation": 3,
+          "bloodline": "wife",
+          "source": "1:3.16",
           "wife": {
-            "name": "Cụ Kiên Bá",
+            "name": "Kiên Bà",
+            "title": "Cụ Bà",
             "alias": "Bà Cả"
-          },
-          "husband": {
-            "name": "Cụ Ông họ Nguyễn Đình"
           },
           "children": [
             {
               "id": "gen4_dinh_chi",
-              "name": "Nguyễn Đình Chỉ & Vợ (Con ông Thường)",
+              "name": "Nguyễn Đình Chí",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.48",
               "husband": {
-                "name": "Nguyễn Đình Chỉ"
-              },
-              "wife": {
-                "name": "Ông Thường",
-                "title": "Vợ"
+                "name": "Nguyễn Đình Chí",
+                "title": "Ông"
               },
               "children": [
-                { "id": "gen5_ly", "name": "Ô. Lý", "generation": 5, "husband": { "name": "Ô. Lý" } },
-                { "id": "gen5_lang", "name": "Ô. Lãng", "generation": 5, "husband": { "name": "Ô. Lãng" } }
+                {
+                  "id": "gen5_chi_5_38",
+                  "name": "Chi",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.38",
+                  "husband": {
+                    "name": "Chi",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_mien",
+                  "name": "Miễn",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.38",
+                  "wife": {
+                    "name": "Miễn",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_kinh",
+                  "name": "Kính",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.38",
+                  "husband": {
+                    "name": "Kính",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_vinh",
+                  "name": "Vinh",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.38",
+                  "husband": {
+                    "name": "Vinh",
+                    "title": "Ông"
+                  }
+                }
               ]
             },
             {
               "id": "gen4_dinh_ngoc",
-              "name": "Nguyễn Đình Ngọc & Thân",
+              "name": "Nguyễn Đình Ngọc",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.49",
               "husband": {
-                "name": "Nguyễn Đình Ngọc"
-              },
-              "wife": {
-                "name": "Thân",
-                "title": "Vợ"
+                "name": "Nguyễn Đình Ngọc",
+                "title": "Ông"
               },
               "children": [
-                { "id": "gen5_thach", "name": "Ô. Thạch", "generation": 5, "husband": { "name": "Ô. Thạch" } },
-                { "id": "gen5_hien", "name": "Ô. Hiền", "generation": 5, "husband": { "name": "Ô. Hiền" } },
-                { "id": "gen5_ngot", "name": "Ô. Ngọt", "generation": 5, "husband": { "name": "Ô. Ngọt" } },
-                { "id": "gen5_mot", "name": "Ô. Mọt", "generation": 5, "husband": { "name": "Ô. Mọt" } },
-                { "id": "gen5_thu_bong", "name": "Ô. Thu Bổng", "generation": 5, "husband": { "name": "Ô. Thu Bổng" } }
+                {
+                  "id": "gen5_tan",
+                  "name": "Tần",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.39",
+                  "wife": {
+                    "name": "Tần",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_thach",
+                  "name": "Thạch",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.39",
+                  "husband": {
+                    "name": "Thạch",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_hien",
+                  "name": "Hiển",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.39",
+                  "husband": {
+                    "name": "Hiển",
+                    "title": "Ông"
+                  },
+                  "notes": "PDF có dấu chấm lửng giữa ông Thạch và ông Hiển; không tự bổ sung tên còn thiếu."
+                }
               ]
             },
             {
-              "id": "gen4_dinh_nghi",
-              "name": "Nguyễn Đình Nghị & Minh",
+              "id": "gen4_nguyen_dinh_duong",
+              "name": "Nguyễn Đình Đường",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.50",
               "husband": {
-                "name": "Nguyễn Đình Nghị"
-              },
-              "wife": {
-                "name": "Minh",
-                "title": "Vợ"
+                "name": "Nguyễn Đình Đường",
+                "title": "Ông"
               },
               "children": [
-                { "id": "gen5_duc", "name": "Ô. Đức", "generation": 5, "husband": { "name": "Ô. Đức" } },
-                { "id": "gen5_tho_2", "name": "Ô. Thọ", "generation": 5, "husband": { "name": "Ô. Thọ" } },
-                { "id": "gen5_loc", "name": "Ô. Lộc", "generation": 5, "husband": { "name": "Ô. Lộc" } },
-                { "id": "gen5_thanh", "name": "B. Thanh", "generation": 5, "wife": { "name": "B. Thanh" } },
-                { "id": "gen5_diep", "name": "B. Diệp", "generation": 5, "wife": { "name": "B. Diệp" } },
-                { "id": "gen5_xan", "name": "B. Xan/Xanh", "generation": 5, "wife": { "name": "B. Xan/Xanh" } }
+                {
+                  "id": "gen5_ngot",
+                  "name": "Ngọt",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.40",
+                  "wife": {
+                    "name": "Ngọt",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_mat",
+                  "name": "Mật",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.40",
+                  "husband": {
+                    "name": "Mật",
+                    "title": "Ông"
+                  },
+                  "notes": "PDF có dấu chấm lửng sau bà Ngọt; không tự bổ sung tên còn thiếu."
+                },
+                {
+                  "id": "gen5_thu",
+                  "name": "Thu",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.40",
+                  "husband": {
+                    "name": "Thu",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_dong_5_40",
+                  "name": "Đông",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.40",
+                  "husband": {
+                    "name": "Đông",
+                    "title": "Ông"
+                  }
+                }
               ]
             },
             {
-              "id": "gen4_dinh_nguyen",
-              "name": "Nguyễn Đình Nguyện",
+              "id": "gen4_nguyen_dinh_hai",
+              "name": "Nguyễn Đình Hải",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.51",
               "husband": {
-                "name": "Nguyễn Đình Nguyện"
-              }
-            },
-            {
-              "id": "gen4_dinh_thi",
-              "name": "Nguyễn Đình Thị",
-              "generation": 4,
-              "husband": {
-                "name": "Nguyễn Đình Thị"
+                "name": "Nguyễn Đình Hải",
+                "title": "Ông"
               },
               "children": [
-                { "id": "gen5_tuoc", "name": "B. Tước", "generation": 5, "wife": { "name": "B. Tước" } },
-                { "id": "gen5_danh", "name": "B. Đành", "generation": 5, "wife": { "name": "B. Đành" } },
-                { "id": "gen5_thi_thuc", "name": "B. Thị Thực", "generation": 5, "wife": { "name": "B. Thị Thực" } },
-                { "id": "gen5_phu", "name": "B. Phù", "generation": 5, "wife": { "name": "B. Phù" } },
-                { "id": "gen5_lam", "name": "Ô. Làm", "generation": 5, "husband": { "name": "Ô. Làm" } }
+                {
+                  "id": "gen5_son",
+                  "name": "Sơn",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.41",
+                  "husband": {
+                    "name": "Sơn",
+                    "title": "Ông"
+                  }
+                }
               ]
             },
             {
               "id": "gen4_thi_gai",
-              "name": "Nguyễn Thị Gái & Đoàn Nghịch",
+              "name": "Nguyễn Thị Gái",
               "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.52",
               "wife": {
-                "name": "Nguyễn Thị Gái"
+                "name": "Nguyễn Thị Gái",
+                "title": "Bà"
               },
-              "husband": {
-                "name": "Đoàn Nghịch"
-              }
+              "children": [
+                {
+                  "id": "gen5_minh",
+                  "name": "Minh",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.42",
+                  "husband": {
+                    "name": "Minh",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_duc",
+                  "name": "Đức",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.42",
+                  "husband": {
+                    "name": "Đức",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_tho_2",
+                  "name": "Thọ",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.42",
+                  "husband": {
+                    "name": "Thọ",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_loc",
+                  "name": "Lộc",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.42",
+                  "husband": {
+                    "name": "Lộc",
+                    "title": "Ông"
+                  }
+                }
+              ]
             }
           ]
         }
@@ -1258,51 +2787,177 @@ const familyData = {
     },
     {
       "id": "gen2_cai_con",
-      "name": "Cụ Ông Cai Còn",
+      "name": "Cai Cỏn",
       "generation": 2,
+      "bloodline": "husband",
+      "source": "1:2.06",
       "husband": {
-        "name": "Cai Còn",
-        "title": "Cụ Ông"
+        "name": "Cai Cỏn",
+        "title": "Cụ Ông",
+        "alias": "Hiệu Phúc Cẩn",
+        "anniversary": "6-9"
       },
       "children": [
         {
           "id": "gen3_chanh_chuot",
-          "name": "Bà Chành Chuột",
+          "name": "Chánh Chức",
           "generation": 3,
+          "bloodline": "wife",
+          "source": "1:3.17",
           "wife": {
-            "name": "Bà Chành Chuột"
-          }
+            "name": "Chánh Chức",
+            "title": "Cụ Bà"
+          },
+          "notes": "PDF ghi: Tốp ông Trai Choét."
         },
         {
           "id": "gen3_diem_bim",
-          "name": "Cụ Điệm Bím (Cụ ông Trại Choét)",
+          "name": "Điểm Bà",
           "generation": 3,
+          "bloodline": "wife",
+          "source": "1:3.18",
           "wife": {
-            "name": "Cụ Điệm Bím"
-          },
-          "husband": {
-            "name": "Cụ ông Trại Choét"
+            "name": "Điểm Bà",
+            "title": "Cụ Bà"
           },
           "children": [
             {
               "id": "gen4_soan_nghich",
-              "name": "Ông Soạn Nghịch",
+              "name": "Soạn Nghếch",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.53",
               "husband": {
-                "name": "Ông Soạn Nghịch"
-              }
+                "name": "Soạn Nghếch",
+                "title": "Ông"
+              },
+              "children": [
+                {
+                  "id": "gen5_thanh",
+                  "name": "Thanh",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.43",
+                  "wife": {
+                    "name": "Thanh",
+                    "title": "Bà"
+                  },
+                  "notes": "Đẻ Dũng Đen."
+                },
+                {
+                  "id": "gen5_soan",
+                  "name": "Soạn",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.43",
+                  "husband": {
+                    "name": "Soạn",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_tuyen",
+                  "name": "Tuyển",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.43",
+                  "husband": {
+                    "name": "Tuyển",
+                    "title": "Ông"
+                  }
+                },
+                {
+                  "id": "gen5_soan_na",
+                  "name": "Na",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.43",
+                  "wife": {
+                    "name": "Na",
+                    "title": "Bà"
+                  }
+                }
+              ]
             },
             {
               "id": "gen4_tra",
-              "name": "Ông Trà & Nguyễn Thị Thê",
+              "name": "Trà",
               "generation": 4,
+              "bloodline": "husband",
+              "source": "1:4.54",
               "husband": {
-                "name": "Ông Trà"
+                "name": "Trà",
+                "title": "Ông"
               },
-              "wife": {
-                "name": "Nguyễn Thị Thê",
-                "notes": "Quê quán: Ở Cầu Hai - Phú Thọ"
-              }
+              "children": [
+                {
+                  "id": "gen5_tuoc",
+                  "name": "Tước",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.44",
+                  "wife": {
+                    "name": "Tước",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_dinh_5_44",
+                  "name": "Đỉnh",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.44",
+                  "wife": {
+                    "name": "Đỉnh",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_the_5_44",
+                  "name": "The",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.44",
+                  "wife": {
+                    "name": "The",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_huan",
+                  "name": "Huân",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.44",
+                  "wife": {
+                    "name": "Huân",
+                    "title": "Bà"
+                  }
+                },
+                {
+                  "id": "gen5_phu",
+                  "name": "Phú",
+                  "generation": 5,
+                  "bloodline": "wife",
+                  "source": "1:5.44",
+                  "wife": {
+                    "name": "Phú",
+                    "title": "Bà",
+                    "alias": "Cung"
+                  }
+                },
+                {
+                  "id": "gen5_lam",
+                  "name": "Lâm",
+                  "generation": 5,
+                  "bloodline": "husband",
+                  "source": "1:5.44",
+                  "husband": {
+                    "name": "Lâm",
+                    "title": "Ông"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -1310,42 +2965,48 @@ const familyData = {
           "id": "gen3_nguyen_van_lien",
           "name": "Nguyễn Văn Liên",
           "generation": 3,
+          "bloodline": "husband",
+          "source": "1:3.19",
           "husband": {
-            "name": "Nguyễn Văn Liên"
+            "name": "Nguyễn Văn Liên",
+            "title": "Cụ Ông"
           },
           "children": [
             {
               "id": "gen4_thi_thi",
-              "name": "Bà Nguyễn Thị Thì & Chồng",
+              "name": "Nguyễn Thị Tiếp Lớn",
               "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.55",
               "wife": {
-                "name": "Nguyễn Thị Thì",
-                "notes": "Tiếp Lộn (Ở Con Trạm)"
+                "name": "Nguyễn Thị Tiếp Lớn",
+                "title": "Bà"
               },
-              "husband": {
-                "name": "Ô. Cầu Hai - Phú Thọ"
-              }
+              "notes": "Không con trai; ở Cầu Hai, Phú Thọ."
             },
             {
-              "id": "gen4_tuoc_danh",
-              "name": "Bà Tước, Bà Đành, Bà Thị Thực & Chồng",
+              "id": "gen4_nguyen_thi_tiep_con",
+              "name": "Nguyễn Thị Tiếp Con",
               "generation": 4,
+              "bloodline": "wife",
+              "source": "1:4.56",
               "wife": {
-                "name": "Bà Tước / Bà Đành / Bà Thị Thực",
-                "notes": "Ở Con Trạm"
+                "name": "Nguyễn Thị Tiếp Con",
+                "title": "Bà"
               },
-              "husband": {
-                "name": "Ô. Hùng Sơn Hùng - Tuyên Quang"
-              }
+              "notes": "Không con trai; ở KM5 Hang Hùm, Tuyên Quang."
             }
           ]
         },
         {
           "id": "gen3_tuyen_early",
-          "name": "Bà Tuyên (chết trẻ)",
+          "name": "Tuyên",
           "generation": 3,
+          "bloodline": "wife",
+          "source": "1:3.20",
           "wife": {
-            "name": "Bà Tuyên",
+            "name": "Tuyên",
+            "title": "Cụ Bà",
             "notes": "Chết trẻ"
           }
         }
@@ -1634,7 +3295,7 @@ class FamilyTreeVisualizer {
     contentEnter.append("text")
       .attr("class", d => {
         const hasBoth = d.data.husband && d.data.wife;
-        const isWifeDescendant = hasBoth && (d.data.id.includes("thi_") || d.data.id.includes("kien_ba"));
+        const isWifeDescendant = hasBoth && d.data.bloodline === "wife";
         return `node-title husband-name ${isWifeDescendant ? 'spouse' : 'bloodline'}`;
       })
       .attr("x", 0)
@@ -1679,7 +3340,7 @@ class FamilyTreeVisualizer {
     contentEnter.append("text")
       .attr("class", d => {
         const hasBoth = d.data.husband && d.data.wife;
-        const isWifeDescendant = !hasBoth || (d.data.id.includes("thi_") || d.data.id.includes("kien_ba"));
+        const isWifeDescendant = !hasBoth || d.data.bloodline === "wife";
         return `node-title wife-name ${isWifeDescendant ? 'bloodline' : 'spouse'}`;
       })
       .attr("x", 0)
@@ -1959,7 +3620,7 @@ class FamilyTreeVisualizer {
     
     if (node.husband && node.wife) {
       spouseSection.style.display = "block";
-      const isWifeDescendant = node.id.includes("thi_") || node.id.includes("kien_ba");
+      const isWifeDescendant = node.bloodline === "wife";
       const spouse = isWifeDescendant ? node.husband : node.wife;
       const spouseTitleDefault = isWifeDescendant ? "Cụ Ông" : "Cụ Bà";
       
@@ -2221,13 +3882,7 @@ class FamilyTreeVisualizer {
     
     const getBloodlineName = (node) => {
       if (!node) return "";
-      if (node.husband && node.wife) {
-        if (node.husband.name.startsWith("Nguyễn") || node.husband.name.includes("Văn") || node.husband.name.startsWith("Ô.")) {
-          return node.husband.name;
-        }
-        return node.wife.name;
-      }
-      return node.husband ? node.husband.name : (node.wife ? node.wife.name : node.name);
+      return node[node.bloodline]?.name || node.name;
     };
     
     const nameA = getBloodlineName(this.nodesMap[nodeIdA]);
@@ -2255,7 +3910,7 @@ class FamilyTreeVisualizer {
       desc += `Cả hai là anh em ruột (cùng bố mẹ).`;
     } 
     else if (d1 === 1 && d2 > 1) { // A is sibling of B's ancestor
-      const isFemale = !!this.nodesMap[nodeIdA].wife && !this.nodesMap[nodeIdA].husband;
+      const isFemale = this.nodesMap[nodeIdA].bloodline === "wife";
       if (d2 === 2) {
         rel = isFemale ? "Cô" : (branchIsOlder ? "Bác" : "Chú");
       } else if (d2 === 3) {
@@ -2277,7 +3932,7 @@ class FamilyTreeVisualizer {
         rel = branchIsOlder ? "Anh/Chị họ" : "Em họ";
         desc += `Cả hai cùng thế hệ. Nhánh của <strong>${nameA}</strong> là cành trên (trưởng) so với nhánh của <strong>${nameB}</strong>.`;
       } else if (diff === 1) {
-        const isFemale = !!this.nodesMap[nodeIdA].wife && !this.nodesMap[nodeIdA].husband;
+        const isFemale = this.nodesMap[nodeIdA].bloodline === "wife";
         rel = isFemale ? "Cô họ" : (branchIsOlder ? "Bác họ" : "Chú họ");
         desc += `<strong>${nameA}</strong> thuộc vai lớn hơn một thế hệ (ngang vai bố mẹ B).`;
       } else if (diff === -1) {
