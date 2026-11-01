@@ -5,12 +5,12 @@
 This repository contains a Vietnamese family-tree viewer built with plain HTML, CSS, JavaScript, and D3 v7.
 
 - `index.html`: page structure, toolbar, sidebar, and CDN dependencies.
-- `style.css`: themes, layout, tree cards, and mobile styling.
-- `app.js`: embedded `familyData`, the `FamilyTreeVisualizer` class, and UI event handlers.
+- `style.css` and `layout.css`: themes, tree cards, overview layout, and mobile styling.
+- `app.js`: embedded `familyData`, the `FamilyTreeVisualizer` class, and UI event handlers; `overview.js`: grouped family overview.
 - `family_tree.json`: standalone copy of the genealogy data.
 - `.github/workflows/deploy.yml`: publishes the repository root to GitHub Pages on pushes to `main` or manual dispatch.
 
-`tests/` contains data and relationship checks; `docs/` explains PDF source references. There are no separate source or asset directories. Fonts, icons, and D3 load from external services.
+`tests/` contains data and layout checks; `docs/` explains source references and viewing modes. Fonts, icons, and D3 load from external services.
 
 ## Build, Test, and Development Commands
 
@@ -32,6 +32,8 @@ Preserve Vietnamese text and diacritics. Keep stable genealogy IDs such as `gen2
 ## Testing Guidelines
 
 Tests use Node's built-in runner; no coverage threshold is configured. Run the data tests and syntax checks above, then manually check rendering, search, node expansion, sidebar details, relationship comparison, zoom/pan, orientation changes, and theme persistence. Check desktop and narrow mobile layouts, and inspect the browser console for errors.
+
+Run `node tests/layout.browser.cjs` with Playwright available for viewport and interaction checks; see `docs/layout.md` for setup.
 
 ## Commit & Pull Request Guidelines
 

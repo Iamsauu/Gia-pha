@@ -3025,10 +3025,10 @@ class FamilyTreeVisualizer {
     this.width = this.container.clientWidth;
     this.height = this.container.clientHeight;
     
-    this.cardWidth = 150;
-    this.cardHeight = 180;
+    this.cardWidth = 196;
+    this.cardHeight = 104;
     this.levelSpacing = 260;
-    this.nodeSpacing = 200;
+    this.nodeSpacing = 126;
     
     this.activeNodeId = null;
     this.searchQuery = "";
@@ -3036,7 +3036,10 @@ class FamilyTreeVisualizer {
     this.compareLcaId = null;
     this.rootNode = null; // D3 root
     this.nodesMap = {}; // Flat lookup map
-    this.orientation = "horizontal"; // Default orientation: "horizontal" or "vertical"
+    this.orientation = "horizontal";
+    this.viewMode = "tree";
+    this.branchId = "all";
+    this.autoFit = true;
     
     this.initD3();
     this.buildMap(this.rawData);
@@ -3049,15 +3052,6 @@ class FamilyTreeVisualizer {
     this.rootNode = d3.hierarchy(this.rawData);
     this.rootNode.x0 = this.height / 2;
     this.rootNode.y0 = 0;
-    
-    // Collapse a node and all its children
-    const collapse = (d) => {
-      if (d.children) {
-        d._children = d.children;
-        d._children.forEach(collapse);
-        d.children = null;
-      }
-    };
     
     this.render(this.rootNode);
   }
@@ -3092,7 +3086,7 @@ class FamilyTreeVisualizer {
   // Initialize D3 canvas elements
   initD3() {
     // Clear container
-    this.container.innerHTML = "";
+    d3.select(this.container).selectAll("svg").remove();
     
     // Create base SVG and outer group
     this.svg = d3.select(this.container)
@@ -3105,9 +3099,11 @@ class FamilyTreeVisualizer {
     
     // Setup Zoom and Pan behaviors
     this.zoom = d3.zoom()
-      .scaleExtent([0.1, 3])
+      .scaleExtent([0.01, 4])
       .on("zoom", (event) => {
         this.gAll.attr("transform", event.transform);
+        document.getElementById("zoom-level").textContent = `${Math.round(event.transform.k * 100)}%`;
+        if (event.sourceEvent) this.autoFit = false;
       });
       
     this.svg.call(this.zoom);
@@ -3118,16 +3114,84 @@ class FamilyTreeVisualizer {
 
   // Setup dynamic window resizing
   setupResizeListener() {
-    window.addEventListener("resize", () => {
+    this.resizeObserver = new ResizeObserver(() => {
+      cancelAnimationFrame(this.resizeFrame);
+      this.resizeFrame = requestAnimationFrame(() => {
+        if (!this.container.clientWidth || !this.container.clientHeight) return;
+        this.width = this.container.clientWidth;
+        this.height = this.container.clientHeight;
+        if (this.viewMode === "tree" && this.autoFit) this.fitToScreen(0);
+      });
+    });
+    this.resizeObserver.observe(this.container);
+  }
+
+  setBranch(branchId) {
+    this.branchId = branchId;
+    const data = branchId === "all" ? this.rawData : {
+      ...this.rawData,
+      children: this.rawData.children.filter(branch => branch.id === branchId)
+    };
+    this.rootNode = d3.hierarchy(data);
+    this.overview?.setBranch(branchId);
+    if (this.viewMode === "tree") {
+      this.render(this.rootNode);
+      this.fitToScreen();
+    }
+  }
+
+  setViewMode(mode) {
+    this.viewMode = mode;
+    this.overview.isActive = mode === "overview";
+    document.body.dataset.view = mode;
+    this.container.hidden = mode !== "tree";
+    this.overview.container.hidden = mode !== "overview";
+    for (const name of ["overview", "tree"]) {
+      const button = document.getElementById(`btn-view-${name}`);
+      button.classList.toggle("active", name === mode);
+      button.setAttribute("aria-pressed", String(name === mode));
+    }
+    document.getElementById("view-hint").textContent = mode === "overview"
+      ? "Chạm vào tên để xem thông tin" : "Kéo để di chuyển · Cuộn hoặc chụm hai ngón để thu phóng";
+    if (mode === "overview") {
+      this.overview.fit();
+    } else {
+      this.setBranch(document.getElementById("branch-select").value);
       this.width = this.container.clientWidth;
       this.height = this.container.clientHeight;
-    });
+      this.fitToScreen(0);
+    }
+  }
+
+  closeSidebar() {
+    const sidebar = document.getElementById("details-sidebar");
+    const wasOpen = sidebar.classList.contains("active");
+    const selectedId = this.activeNodeId;
+    sidebar.classList.remove("active");
+    sidebar.setAttribute("aria-hidden", "true");
+    sidebar.inert = true;
+    document.body.classList.remove("has-details");
+    this.activeNodeId = null;
+    this.compareTargetId = null;
+    this.compareLcaId = null;
+    this.render(this.rootNode);
+    this.overview?.updateHighlights();
+    if (wasOpen) {
+      const previous = this.lastSelectionButton;
+      const fallback = this.overview?.container.querySelector(`[data-node-id="${selectedId}"]`);
+      const target = previous?.isConnected && previous.getClientRects().length ? previous : fallback;
+      (target || document.getElementById("search-input")).focus({ preventScroll: true });
+    }
   }
 
   // Render the D3 Tree Node Link Layout
-  render(source) {
-    const self = this;
-    const duration = 400;
+  render(source = this.rootNode) {
+    if (this.viewMode === "overview") {
+      this.overview?.updateHighlights();
+      this.overview?.fit();
+      return;
+    }
+    const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 240;
     const isHorizontal = this.orientation === "horizontal";
     
     // Spacing rules depending on orientation
@@ -3200,6 +3264,8 @@ class FamilyTreeVisualizer {
       .remove();
 
     // Render Nodes Groups
+    document.getElementById("view-status").textContent = `${nodes.length} mục trên sơ đồ · ${this.branchId === "all" ? "Tất cả các nhánh" : "Nhánh đã chọn"}`;
+
     const nodeElements = this.gAll.selectAll("g.node-group")
       .data(nodes, d => d.data.id);
       
@@ -3207,6 +3273,16 @@ class FamilyTreeVisualizer {
     const nodeEnter = nodeElements.enter()
       .append("g")
       .attr("class", "node-group")
+      .attr("data-node-id", d => d.data.id)
+      .attr("role", "button")
+      .attr("tabindex", 0)
+      .attr("aria-label", d => `Đời ${d.data.generation}: ${d.data.name}`)
+      .on("keydown", (event, d) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          this.selectNode(d.data.id);
+        }
+      })
       .attr("transform", d => isHorizontal ? `translate(${source.y0 !== undefined ? source.y0 : source.y}, ${source.x0 !== undefined ? source.x0 : source.x})` : `translate(${source.x0 !== undefined ? source.x0 : source.x}, ${source.y0 !== undefined ? source.y0 : source.y})`)
       .style("opacity", 0)
       .on("click", (event, d) => {
@@ -3236,6 +3312,7 @@ class FamilyTreeVisualizer {
           d._children = null;
         }
         this.render(d);
+        if (this.autoFit) this.fitToScreen();
       });
       
     // Plus/Minus icon inside circle
@@ -3259,6 +3336,7 @@ class FamilyTreeVisualizer {
           d._children = null;
         }
         this.render(d);
+        if (this.autoFit) this.fitToScreen();
       });
       
     // Create node cards using SVG (safe and stable vertical cards)
@@ -3275,115 +3353,44 @@ class FamilyTreeVisualizer {
       .attr("rx", 6)
       .attr("ry", 6);
       
-    // Node contents - Names & info
-    const contentEnter = nodeEnter.append("g").attr("class", "node-content");
-    
-    // Husband Title
-    contentEnter.append("text")
-      .attr("class", "node-title husband-title")
-      .attr("x", 0)
-      .attr("y", d => {
-        const hasBoth = d.data.husband && d.data.wife;
-        return hasBoth ? -50 : -15;
-      })
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.65rem")
-      .attr("opacity", "0.8")
-      .text(d => d.data.husband ? (d.data.husband.title || "Ông") : "");
-
-    // Husband Name
-    contentEnter.append("text")
-      .attr("class", d => {
-        const hasBoth = d.data.husband && d.data.wife;
-        const isWifeDescendant = hasBoth && d.data.bloodline === "wife";
-        return `node-title husband-name ${isWifeDescendant ? 'spouse' : 'bloodline'}`;
-      })
-      .attr("x", 0)
-      .attr("y", d => {
-        const hasBoth = d.data.husband && d.data.wife;
-        return hasBoth ? -32 : 5;
-      })
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.85rem")
-      .text(d => {
-        if (d.data.husband) {
-          let name = d.data.husband.name;
-          if (name.length > 20) name = name.substring(0, 18) + "..."; // prevent huge overflow
-          return name;
+    // Wrap full names rather than cutting them off on compact cards.
+    nodeEnter.append("title").text(d => d.data.name);
+    const wrapName = (element, name, y, size) => {
+      const label = d3.select(element).append("text")
+        .attr("class", "node-label")
+        .attr("text-anchor", "middle")
+        .attr("font-size", size)
+        .attr("y", y);
+      let line = [];
+      let row = label.append("tspan").attr("x", 0).attr("dy", 0);
+      for (const word of name.split(/\s+/)) {
+        line.push(word);
+        row.text(line.join(" "));
+        if (row.node().getComputedTextLength() > this.cardWidth - 20 && line.length > 1) {
+          line.pop();
+          row.text(line.join(" "));
+          line = [word];
+          row = label.append("tspan").attr("x", 0).attr("dy", 13).text(word);
         }
-        return "";
-      });
-      
-    // Divider line inside card (if joint)
-    contentEnter.append("line")
-      .attr("class", "node-divider")
-      .attr("x1", -30)
-      .attr("y1", -8)
-      .attr("x2", 30)
-      .attr("y2", -8)
-      .style("display", d => (d.data.husband && d.data.wife) ? "block" : "none");
-      
-    // Wife Title
-    contentEnter.append("text")
-      .attr("class", "node-title wife-title")
-      .attr("x", 0)
-      .attr("y", d => {
-        const hasBoth = d.data.husband && d.data.wife;
-        return hasBoth ? 16 : -15;
-      })
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.65rem")
-      .attr("opacity", "0.8")
-      .text(d => d.data.wife ? (d.data.wife.title || "Bà") : "");
-
-    // Wife Name
-    contentEnter.append("text")
-      .attr("class", d => {
-        const hasBoth = d.data.husband && d.data.wife;
-        const isWifeDescendant = !hasBoth || d.data.bloodline === "wife";
-        return `node-title wife-name ${isWifeDescendant ? 'bloodline' : 'spouse'}`;
-      })
-      .attr("x", 0)
-      .attr("y", d => {
-        const hasBoth = d.data.husband && d.data.wife;
-        return hasBoth ? 34 : 5;
-      })
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.85rem")
-      .text(d => {
-        if (d.data.wife) {
-          let name = d.data.wife.name;
-          if (name.length > 20) name = name.substring(0, 18) + "..."; // prevent huge overflow
-          return name;
-        }
-        return "";
-      });
-
-    // Single Name/Notes fallback
-    contentEnter.append("text")
-      .attr("class", "node-title single-name")
-      .attr("x", 0)
-      .attr("y", 0)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.8rem")
-      .text(d => {
-        if (!d.data.husband && !d.data.wife && d.data.notes) {
-          let note = d.data.notes;
-          if (note.length > 20) note = note.substring(0, 18) + "...";
-          return note;
-        }
-        return "";
-      });
-      
-    // Generation indicator label (small badge at the bottom)
-    contentEnter.append("text")
-      .attr("class", "node-desc")
-      .attr("x", 0)
-      .attr("y", cardHalfH - 12)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "0.7rem")
-      .attr("font-weight", "500")
-      .text(d => `ĐỜI ${d.data.generation}`);
+      }
+      return label;
+    };
+    nodeEnter.append("g").attr("class", "node-content").each((d, index, elements) => {
+      const element = elements[index];
+      const primary = d.data[d.data.bloodline];
+      const spouse = d.data[d.data.bloodline === "wife" ? "husband" : "wife"];
+      d3.select(element).append("text")
+        .attr("class", "node-desc").attr("text-anchor", "middle")
+        .attr("y", -35).attr("font-size", 9)
+        .text(`ĐỜI ${d.data.generation} · ${primary?.title || ""}`);
+      wrapName(element, primary?.name || d.data.name, spouse ? -15 : 0, 13)
+        .classed("bloodline", true);
+      if (spouse) wrapName(element, spouse.name, 17, 11).classed("spouse", true);
+      d3.select(element).append("text")
+        .attr("class", "node-desc").attr("text-anchor", "middle")
+        .attr("y", 43).attr("font-size", 9)
+        .text(d.data.children?.length ? `${d.data.children.length} con` : "");
+    });
 
     // Update phase
     const mergedNode = nodeElements.merge(nodeEnter);
@@ -3423,6 +3430,9 @@ class FamilyTreeVisualizer {
       d.x0 = d.x;
       d.y0 = d.y;
     });
+
+    this.overview?.updateHighlights();
+    if (this.viewMode === "overview") this.overview?.fit();
 
     // Initial Zoom layout positioning on load
     if (!this.initialZoomDone) {
@@ -3471,19 +3481,33 @@ class FamilyTreeVisualizer {
 
   // Node Selection Logic
   selectNode(nodeId, openSidebar = true) {
+    this.lastSelectionButton = document.activeElement;
+    if (this.viewMode === "tree") {
+      const path = this.getLineagePath(nodeId);
+      if (this.branchId !== "all" && path[1] && path[1].id !== this.branchId) {
+        this.setBranch(path[1].id);
+        document.getElementById("branch-select").value = path[1].id;
+      }
+      // Search can reach a person even when an ancestor is collapsed.
+      let current = this.rootNode;
+      for (const ancestor of path.slice(1)) {
+        if (current._children) {
+          current.children = current._children;
+          current._children = null;
+        }
+        current = current.children?.find(child => child.data.id === ancestor.id);
+        if (!current) break;
+      }
+    }
     this.activeNodeId = nodeId;
     this.compareTargetId = null;
     this.compareLcaId = null;
-    
-    // Render tree with selected highlight
-    this.render(this.rootNode);
-    
-    // Focus & Center node in view
-    this.centerOnNode(nodeId);
-    
-    // Open Details Sidebar if openSidebar is true
-    if (openSidebar) {
-      this.populateSidebar(nodeId);
+    if (openSidebar) this.populateSidebar(nodeId);
+    if (this.viewMode === "overview") {
+      this.overview.select(nodeId);
+    } else {
+      this.render(this.rootNode);
+      this.centerOnNode(nodeId);
     }
   }
 
@@ -3491,88 +3515,51 @@ class FamilyTreeVisualizer {
   toggleOrientation() {
     this.orientation = (this.orientation === "horizontal") ? "vertical" : "horizontal";
     this.render(this.rootNode);
-    if (this.activeNodeId) {
-      this.centerOnNode(this.activeNodeId);
-    } else {
-      this.fitToScreen();
-    }
+    this.fitToScreen();
   }
 
-  // Smoothly center the canvas viewport on target node coordinates
+  availableViewport() {
+    let width = this.container.clientWidth;
+    let height = this.container.clientHeight;
+    const sidebar = document.getElementById("details-sidebar");
+    if (sidebar.classList.contains("active")) {
+      if (window.innerWidth <= 768) height -= sidebar.getBoundingClientRect().height;
+      else width -= sidebar.getBoundingClientRect().width;
+    }
+    return { width: Math.max(120, width), height: Math.max(100, height) };
+  }
+
   centerOnNode(nodeId) {
     const node = this.rootNode.descendants().find(d => d.data.id === nodeId);
     if (!node) return;
-    
-    const isHorizontal = this.orientation === "horizontal";
-    const isMobile = window.innerWidth <= 768;
-    const isSidebarActive = document.getElementById("details-sidebar")?.classList.contains("active");
-    const scale = isMobile ? 0.65 : 0.95;
-    
-    let x, y;
-    if (isHorizontal) {
-      const xOffset = (!isMobile && isSidebarActive) ? (- (this.cardWidth / 2) - 150) : 0;
-      const yCenter = (isMobile && isSidebarActive) ? (this.height / 6) : (this.height / 2);
-      x = this.width / 2 - node.y * scale + xOffset;
-      y = yCenter - node.x * scale;
-    } else {
-      const xOffset = (!isMobile && isSidebarActive) ? -150 : 0;
-      const yCenter = (isMobile && isSidebarActive) ? (this.height / 6) : (this.height / 2);
-      x = this.width / 2 - node.x * scale + xOffset;
-      y = yCenter - node.y * scale;
-    }
-    
-    this.svg.transition()
-      .duration(750)
-      .call(
-        this.zoom.transform,
-        d3.zoomIdentity.translate(x, y).scale(scale)
-      );
+    this.autoFit = false;
+    const { width, height } = this.availableViewport();
+    const scale = window.innerWidth <= 768 ? 1 : 1.1;
+    const x = this.orientation === "horizontal" ? node.y : node.x;
+    const y = this.orientation === "horizontal" ? node.x : node.y;
+    this.svg.interrupt().transition().duration(300).call(this.zoom.transform,
+      d3.zoomIdentity.translate(width / 2 - x * scale, height / 2 - y * scale).scale(scale));
   }
 
-  // Fit the whole tree structure into screen viewport bounds
-  fitToScreen(duration = 750) {
-    if (!this.rootNode) return;
-    
+  fitToScreen(duration = 300) {
+    if (!this.rootNode || this.container.hidden) return;
     const nodes = this.rootNode.descendants();
-    if (nodes.length === 0) return;
-    
-    const isHorizontal = this.orientation === "horizontal";
-    let xMin, xMax, yMin, yMax;
-    
-    if (isHorizontal) {
-      xMin = d3.min(nodes, d => d.y) - this.levelSpacing / 2;
-      xMax = d3.max(nodes, d => d.y) + this.levelSpacing / 2;
-      yMin = d3.min(nodes, d => d.x) - this.nodeSpacing / 2;
-      yMax = d3.max(nodes, d => d.x) + this.nodeSpacing / 2;
-    } else {
-      const vNodeSpacing = this.cardWidth + 40;
-      const vLevelSpacing = this.cardHeight + 100;
-      xMin = d3.min(nodes, d => d.x) - vNodeSpacing / 2;
-      xMax = d3.max(nodes, d => d.x) + vNodeSpacing / 2;
-      yMin = d3.min(nodes, d => d.y) - vLevelSpacing / 2;
-      yMax = d3.max(nodes, d => d.y) + vLevelSpacing / 2;
-    }
-    
-    const treeW = xMax - xMin;
-    const treeH = yMax - yMin;
-    
-    const isMobile = window.innerWidth <= 768;
-    const margin = isMobile ? 24 : 80;
-    const availableW = this.width - margin;
-    const availableH = this.height - margin;
-    
-    const scale = Math.min(availableW / treeW, availableH / treeH, 1);
-    
-    const x = this.width / 2 - (xMin + treeW / 2) * scale;
-    const y = this.height / 2 - (yMin + treeH / 2) * scale;
-    
-    const trans = d3.zoomIdentity.translate(x, y).scale(scale);
-    
-    if (duration > 0) {
-      this.svg.transition().duration(duration).call(this.zoom.transform, trans);
-    } else {
-      this.svg.call(this.zoom.transform, trans);
-    }
+    if (!nodes.length) return;
+    this.autoFit = true;
+    const horizontal = this.orientation === "horizontal";
+    const xMin = d3.min(nodes, d => horizontal ? d.y : d.x) - this.cardWidth / 2 - 28;
+    const xMax = d3.max(nodes, d => horizontal ? d.y : d.x) + this.cardWidth / 2 + 28;
+    const yMin = d3.min(nodes, d => horizontal ? d.x : d.y) - this.cardHeight / 2 - 28;
+    const yMax = d3.max(nodes, d => horizontal ? d.x : d.y) + this.cardHeight / 2 + 28;
+    const { width, height } = this.availableViewport();
+    const scale = Math.min((width - 32) / (xMax - xMin), (height - 32) / (yMax - yMin), 1.4);
+    const transform = d3.zoomIdentity
+      .translate(width / 2 - (xMin + xMax) * scale / 2, height / 2 - (yMin + yMax) * scale / 2)
+      .scale(scale);
+    this.svg.interrupt();
+    if (duration > 0 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.svg.transition().duration(duration).call(this.zoom.transform, transform);
+    } else this.svg.call(this.zoom.transform, transform);
   }
 
   // Get solar Date for year 2026 based on Lunar day and month
@@ -3607,6 +3594,10 @@ class FamilyTreeVisualizer {
     
     const sidebar = document.getElementById("details-sidebar");
     sidebar.classList.add("active");
+    sidebar.setAttribute("aria-hidden", "false");
+    sidebar.inert = false;
+    sidebar.scrollTop = 0;
+    document.body.classList.add("has-details");
     
     // Set Badge and Name headers
     document.getElementById("sidebar-gen-badge").innerText = `Đời ${node.generation}`;
@@ -3871,14 +3862,10 @@ class FamilyTreeVisualizer {
     const c2 = d2 > 0 ? pathB[lcaIdx] : null;
     
     let branchIsOlder = false;
-    const lcaD3Node = this.rootNode.descendants().find(d => d.data.id === lca.id);
-    if (lcaD3Node && lcaD3Node.children) {
-      const idx1 = c1 ? lcaD3Node.children.findIndex(child => child.data.id === c1.id) : -1;
-      const idx2 = c2 ? lcaD3Node.children.findIndex(child => child.data.id === c2.id) : -1;
-      if (idx1 !== -1 && idx2 !== -1) {
-        branchIsOlder = idx1 < idx2;
-      }
-    }
+    const siblings = this.nodesMap[lca.id]?.children || [];
+    const idx1 = c1 ? siblings.findIndex(child => child.id === c1.id) : -1;
+    const idx2 = c2 ? siblings.findIndex(child => child.id === c2.id) : -1;
+    if (idx1 !== -1 && idx2 !== -1) branchIsOlder = idx1 < idx2;
     
     const getBloodlineName = (node) => {
       if (!node) return "";
@@ -3962,17 +3949,20 @@ class FamilyTreeVisualizer {
 
   // Zoom wrapper calls
   zoomIn() {
+    this.autoFit = false;
     this.svg.transition().duration(300).call(this.zoom.scaleBy, 1.3);
   }
   
   zoomOut() {
+    this.autoFit = false;
     this.svg.transition().duration(300).call(this.zoom.scaleBy, 1 / 1.3);
   }
   
   // Set Search query
   setSearch(query) {
     this.searchQuery = query;
-    this.render();
+    if (this.viewMode === "tree") this.render(this.rootNode);
+    this.overview?.updateHighlights();
   }
 }
 
@@ -3980,13 +3970,39 @@ class FamilyTreeVisualizer {
 document.addEventListener("DOMContentLoaded", () => {
   const visualizer = new FamilyTreeVisualizer("tree-container", familyData);
   
-  // Focus and highlight the first node (root node) on load without opening sidebar
-  if (visualizer.rootNode && visualizer.rootNode.data.id) {
-    setTimeout(() => {
-      visualizer.selectNode(visualizer.rootNode.data.id, false);
-    }, 300);
+  visualizer.overview = new FamilyOverview(document.getElementById("overview-container"), visualizer);
+  visualizer.setViewMode("overview");
+  const branchSelect = document.getElementById("branch-select");
+  for (const branch of familyData.children) {
+    const option = document.createElement("option");
+    option.value = branch.id;
+    option.textContent = FamilyOverview.primary(branch);
+    branchSelect.append(option);
   }
-  
+  branchSelect.addEventListener("change", () => {
+    visualizer.closeSidebar();
+    visualizer.setBranch(branchSelect.value);
+  });
+  document.getElementById("btn-view-overview").addEventListener("click", () => visualizer.setViewMode("overview"));
+  document.getElementById("btn-view-tree").addEventListener("click", () => visualizer.setViewMode("tree"));
+  document.getElementById("btn-fullscreen").addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch {
+      document.getElementById("view-status").textContent = "Trình duyệt chưa hỗ trợ toàn màn hình. Bạn vẫn có thể xem tổng quan.";
+    }
+  });
+  document.addEventListener("fullscreenchange", () => {
+    const button = document.getElementById("btn-fullscreen");
+    const label = document.fullscreenElement ? "Thoát toàn màn hình" : "Bật toàn màn hình";
+    button.setAttribute("aria-label", label);
+    button.title = label;
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") visualizer.closeSidebar();
+  });
+
   // Setup Theme Switcher
   const themeToggle = document.getElementById("btn-theme-toggle");
   themeToggle.addEventListener("click", () => {
@@ -3998,15 +4014,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   
   // Load saved theme
-  const savedTheme = localStorage.getItem("theme") || "dark";
+  const savedTheme = localStorage.getItem("theme") || "light";
   document.documentElement.setAttribute("data-theme", savedTheme);
 
   // Setup Toolbar Zoom buttons
   document.getElementById("btn-zoom-in").addEventListener("click", () => visualizer.zoomIn());
   document.getElementById("btn-zoom-out").addEventListener("click", () => visualizer.zoomOut());
-  document.getElementById("btn-zoom-fit").addEventListener("click", () => visualizer.fitToScreen());
+  document.getElementById("btn-zoom-fit").addEventListener("click", () => {
+    visualizer.closeSidebar();
+    if (visualizer.viewMode === "overview") visualizer.overview.fit();
+    else visualizer.fitToScreen();
+  });
   
-  // Setup Floating Rotate Tree button
+  // Keep orientation controls available in the diagram toolbar.
   const rotateBtn = document.getElementById("btn-rotate-tree");
   if (rotateBtn) {
     rotateBtn.addEventListener("click", () => {
@@ -4015,12 +4035,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   // Setup Sidebar close button
-  document.getElementById("btn-close-sidebar").addEventListener("click", () => {
-    document.getElementById("details-sidebar").classList.remove("active");
-    visualizer.activeNodeId = null;
-    visualizer.render();
-  });
-  
+  document.getElementById("btn-close-sidebar").addEventListener("click", () => visualizer.closeSidebar());
+
   // Setup Search functions
   const searchInput = document.getElementById("search-input");
   const clearSearchBtn = document.getElementById("clear-search-btn");
@@ -4076,7 +4092,8 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Limit to 8 matches for speed
       matches.slice(0, 8).forEach(node => {
-        const div = document.createElement("div");
+        const div = document.createElement("button");
+        div.type = "button";
         div.className = "search-item";
         div.innerHTML = `
           <span class="search-item-name">${node.name}</span>
@@ -4085,6 +4102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         div.addEventListener("click", () => {
           treeVis.selectNode(node.id);
           searchResults.style.display = "none";
+          searchInput.blur();
         });
         searchResults.appendChild(div);
       });

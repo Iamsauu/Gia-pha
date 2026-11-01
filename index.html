@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" data-theme="dark">
+<html lang="vi" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="layout.css">
   
   <!-- D3.js Library -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -36,36 +37,47 @@
       <!-- Search Input -->
       <div class="search-wrapper">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="search-input" placeholder="Tìm kiếm thành viên..." autocomplete="off">
+        <input type="search" id="search-input" aria-label="Tìm thành viên trong toàn bộ gia phả" placeholder="Tìm tên trong gia phả..." autocomplete="off">
         <button id="clear-search-btn" class="clear-search-btn" title="Xóa tìm kiếm">
           <i class="fa-solid fa-xmark"></i>
         </button>
         <div id="search-results" class="search-results-dropdown"></div>
       </div>
       
-      <!-- Toolbar Controls -->
-      <div class="control-group">
-        <button id="btn-zoom-in" class="btn-control" title="Phóng to">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-        <button id="btn-zoom-out" class="btn-control" title="Thu nhỏ">
-          <i class="fa-solid fa-minus"></i>
-        </button>
-        <button id="btn-zoom-fit" class="btn-control" title="Vừa màn hình">
-          <i class="fa-solid fa-arrows-to-eye"></i>
-        </button>
-      </div>
-      
       <!-- Theme Switcher -->
-      <button id="btn-theme-toggle" class="btn-control btn-theme" title="Đổi giao diện">
+      <button id="btn-theme-toggle" class="btn-control btn-theme" title="Đổi giao diện" aria-label="Đổi giao diện sáng hoặc tối">
         <i class="fa-solid fa-moon theme-icon-dark"></i>
         <i class="fa-solid fa-sun theme-icon-light"></i>
       </button>
     </div>
   </header>
 
+  <nav class="view-toolbar" aria-label="Cách xem gia phả">
+    <div class="view-switch" role="group" aria-label="Chế độ xem">
+      <button id="btn-view-overview" class="view-tab active" aria-pressed="true">Tổng quan</button>
+      <button id="btn-view-tree" class="view-tab" aria-pressed="false">Sơ đồ</button>
+    </div>
+    <label class="branch-filter" for="branch-select">
+      <span>Nhánh</span>
+      <select id="branch-select" aria-label="Chọn nhánh gia phả">
+        <option value="all">Tất cả nhánh</option>
+      </select>
+    </label>
+    <div class="view-tools">
+      <div class="control-group diagram-controls">
+        <button id="btn-zoom-out" class="btn-control" title="Thu nhỏ" aria-label="Thu nhỏ">−</button>
+        <output id="zoom-level" aria-label="Mức thu phóng">100%</output>
+        <button id="btn-zoom-in" class="btn-control" title="Phóng to" aria-label="Phóng to">+</button>
+        <button id="btn-rotate-tree" class="btn-control" title="Đổi hướng sơ đồ" aria-label="Đổi hướng sơ đồ">↔</button>
+      </div>
+      <button id="btn-zoom-fit" class="tool-button" title="Vừa màn hình"><span aria-hidden="true">⤢</span> <span>Vừa màn hình</span></button>
+      <button id="btn-fullscreen" class="btn-control" title="Toàn màn hình" aria-label="Bật toàn màn hình">⛶</button>
+    </div>
+  </nav>
+
   <!-- Main Workspace -->
   <main class="app-main">
+    <section id="overview-container" class="overview-container" aria-label="Tổng quan toàn bộ gia phả" hidden></section>
     <!-- Chart Container -->
     <div id="tree-container" class="tree-container">
       <div id="loading-overlay" class="loading-overlay">
@@ -73,15 +85,11 @@
         <p>Đang tải sơ đồ gia phả...</p>
       </div>
 
-      <!-- Floating Rotate Tree Button -->
-      <button id="btn-rotate-tree" class="btn-floating-rotate" title="Xoay cây (Ngang / Dọc)">
-        <i class="fa-solid fa-arrows-rotate"></i>
-      </button>
     </div>
 
     <!-- Details Sidebar (Glassmorphism Slide-out) -->
-    <aside id="details-sidebar" class="details-sidebar">
-      <button id="btn-close-sidebar" class="btn-close-sidebar" title="Đóng bảng chi tiết">
+    <aside id="details-sidebar" class="details-sidebar" aria-label="Thông tin thành viên" aria-hidden="true" inert>
+      <button id="btn-close-sidebar" class="btn-close-sidebar" title="Đóng bảng chi tiết" aria-label="Đóng thông tin thành viên">
         <i class="fa-solid fa-xmark"></i>
       </button>
       
@@ -144,7 +152,10 @@
     </aside>
   </main>
 
+  <footer class="view-status"><span id="view-status" role="status"></span><span id="view-hint">Chạm vào tên để xem thông tin</span></footer>
+
   <!-- Custom JavaScript -->
+  <script src="overview.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
